@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import './App.css';
-import Loginpage from './components/Loginpage/Login';
-import {BrowserRouter as Router,
+import "./App.css";
+import Loginpage from "./components/Loginpage/Login";
+import {
+  BrowserRouter as Router,
   Switch,
-  Route,} from "react-router-dom"; 
-  import Signup from './components/Signup/Signup';
- 
+  Route,
+  Redirect,
+} from "react-router-dom";
+import Signup from "./components/Signup/Signup";
+
 function App() {
   // const demoUser = {
   //   phone: "7025638802",
@@ -14,28 +17,25 @@ function App() {
   // }
 
   // const[user, setUser] =useState({phone:""});
-  
 
-  
   return (
-    <div className='app-class'>
-      <div className='eclipse1'>
-      <div className='eclipse2'>
-
+    <div className="app-class">
+      <div className="eclipse1">
+        <div className="eclipse2"></div>
       </div>
-      </div>
-      <Router> 
-
+      <Router>
         <Switch>
-          <Route path="/">
-            <Loginpage /> 
+          <Route exact path="/">
+            <Redirect to="/login" />
+          </Route>
+          <Route exact path="/login">
+            <Loginpage />
           </Route>
           <Route path="/signup">
-            <Signup/>
+            <Signup />
           </Route>
         </Switch>
       </Router>
-      
     </div>
   );
 }

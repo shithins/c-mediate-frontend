@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import './Signup.css';
+import { SignupNumber } from "./Signupsub";
 
-export default function SignupNumber ()  {
+export default function Signup ()  {
+    const [page,setPage]=useState("mobile")
     return(
-        <h2>helloworld</h2>
+        <div className="SignupMain">
+            <div className="signup-box">
+                {page ==="mobile"&&<SignupNumber/>}
+                {/* {page ==='otp'&&} */}
+
+            </div>
+        </div>
 
     )
 };

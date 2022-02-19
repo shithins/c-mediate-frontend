@@ -1,0 +1,57 @@
+.SignupMain{
+    position:relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.signup-box{
+    position: absolute;
+    width: 561px;
+    height: 600px;
+    right: 300px;
+    top: 200px;
+    background: #dbd9d9;
+    mix-blend-mode: overlay;
+    border-radius: 47px;
+    
+}
+
+.signup-num>input{
+    position: absolute;
+    width:450px;
+    height: 50px;
+    top: 250px;
+    left: 50px;
+    background: rgb(253, 249, 249);
+    /* mix-blend-mode: soft-light; */
+    border-radius: 47px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.signup-num>label{
+    position: absolute;
+    font-size: 1.8rem; ;
+    font-weight: 600;
+    top: 150px;
+    left: 210px;
+    
+    
+}
+
+.signup-num>button{
+    position: absolute;
+    width: 171px;
+    height: 48px;
+    bottom: 170px;
+    left: 185px;
+    text-align: center;
+    text-decoration-color: rgb(201, 47, 47);
+    background: #e6e1e1;
+    /* mix-blend-mode: color-dodge; */
+    border-radius: 16px;
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
