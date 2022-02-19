@@ -1,0 +1,114 @@
+.login-main{
+    position:relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
+.login-mainbox{
+    position: absolute;
+    width: 561px;
+    height: 651px;
+    right: 300px;
+    top: 150px;
+    background: #dbd9d9;
+    mix-blend-mode: overlay;
+    border-radius: 47px;
+    align-items: center;
+}
+
+.login-mainbox>h2{
+     position: absolute;
+    width: 222px;
+    height: 57px;
+    left: 160px;
+    top: 40px;
+    font-family: Space Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 71px;
+    text-align: center;
+    color: #000000;
+}
+
+
+
+.login-textbox1{
+    position: relative;
+
+
+}
+
+.login-textbox1>input{
+    position: absolute;
+    width:20vw;
+    height: 6vh;
+    top: 200px;
+    left: 50px;
+    background: rgb(253, 249, 249);
+    /* mix-blend-mode: soft-light; */
+    border-radius: 47px;
+}
+
+
+.login-textbox2{
+    position: relative;
+    
+    
+    }
+    
+    .login-textbox2>input{
+    position: absolute;
+    width:20vw;
+    height: 6vh;
+    top: 320px;
+    left: 50px;
+    background: rgb(253, 249, 249);
+    /* mix-blend-mode: soft-light; */
+    border-radius: 47px;
+    }
+
+    .login-btn>button{
+    position: absolute;
+    width: 171px;
+    height: 48px;
+    bottom: 170px;
+    left: 185px;
+    text-align: center;
+    text-decoration-color: rgb(201, 47, 47);
+    background: #e6e1e1;
+    /* mix-blend-mode: color-dodge; */
+    border-radius: 16px;
+    }
+
+.fpass>h3{
+    position: absolute;
+    width: 367px;
+    height: 23px;
+    bottom: 90px;
+    left: 90px;
+    font-family: Space Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 18px;
+    text-align: center;
+    color: #000000;
+    }
+
+    .fpass>h4{
+        position: absolute;
+        width: 367px;
+        height: 23px;
+        bottom: 50px;
+        left: 90px;
+        font-family: Space Mono;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 18px;
+        text-align: center;
+        color: #000000;
+        }
