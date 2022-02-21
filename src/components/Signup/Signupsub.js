@@ -21,3 +21,19 @@ export const Verifyotp = () => {
         </div>
     )
 };
+
+export const Cpassword = () => {
+    return(
+        <div className="create-pass">
+            <h2>Create new password</h2>
+            {/* <label htmlFor="text">NEW PASSWORD</label> */}
+            <div className="pass-box1">
+            <input type="text"  placeholder="Enter new password" required/>
+            </div>
+            <div className="pass-box2">
+            <input type="text" placeholder="Re-enter the password" required/>
+            </div>
+            <button type="submit">CONFIRM</button>
+        </div>
+    )
+};
