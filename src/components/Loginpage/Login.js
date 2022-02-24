@@ -1,31 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { errorToast, successToast } from "../../constant/toast";
 import Axios from "../../constant/axios";
-import {Redirect,useHistory} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const Loginpage = () => {
-  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [details, setDetails] = useState({ mobile: "", password: "" });
-  const history=useHistory();
+  const history = useHistory();
+
+  useEffect(() => {
+    let user = localStorage.getItem("user");
+    if (user) successToast("gotIT");
+  }, []);
+
   const submitHandler = () => {
-    Axios.post("/auth/login", details).then((res) => {
-      console.log(res.data);
-      if (res.data.status) successToast();
-      else errorToast(res.data.message);
-    });
+    if (loading) return;
+    if (!details.mobile || !details.password) return errorToast("Missing data");
+    setLoading(true);
+    Axios.post("/auth/login", details)
+      .then((res) => {
+        setLoading(false);
+
+        if (res.data.status) {
+          localStorage.setItem("user", JSON.stringify(res?.data?.profile));
+          window.location.reload();
+        } else errorToast(res.data.message);
+      })
+      .catch((e) => {
+        setLoading(false);
+        errorToast("Invalid login !");
+      });
   };
 
   return (
     <div className="login-main">
-
       <div className="login-mainbox">
         <h2>LOGIN</h2>
 
         <div className="login-textbox1">
-            
           <input
             type="text"
             name="phone"
@@ -36,7 +53,6 @@ const Loginpage = () => {
           />
         </div>
         <div className="login-textbox2">
-            
           <input
             type="password"
             name="password"
@@ -49,10 +65,18 @@ const Loginpage = () => {
           />
         </div>
         <div className="login-btn">
-          <button onClick={submitHandler}>LOGIN</button>
+          <button onClick={submitHandler}>
+            {loading ? (
+              <Box sx={{ width: "100%" }}>
+                <LinearProgress />
+              </Box>
+            ) : (
+              "Login"
+            )}
+          </button>
         </div>
         <div className="fpass">
-            <h4 onClick={ () => history.push("/signup")}>Sign-up</h4>
+          <h4 onClick={() => history.push("/signup")}>Sign-up</h4>
           <h3>Forgot password ?</h3>
         </div>
       </div>
