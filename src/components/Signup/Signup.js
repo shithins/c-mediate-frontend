@@ -3,7 +3,7 @@ import './Signup.css';
 import { SignupNumber, Verifyotp, Cpassword } from "./Signupsub";
 
 export default function Signup ()  {
-    const [page,setPage]=useState("cpass")
+    const [page,setPage]=useState("mobile")
     return(
         <div className="SignupMain">
             <div className="signup-box">
