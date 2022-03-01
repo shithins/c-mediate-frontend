@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import "./App.css";
 import Loginpage from "./components/Loginpage/Login";
 import {
@@ -9,6 +8,9 @@ import {
   Redirect,
 } from "react-router-dom";
 import Signup from "./components/Signup/Signup";
+import Userhome from "./components/User/Userhome/Userhome";
+import Ucomplaints from "./components/User/Usercomplaints/Ucomplaints";
+import Usuggestions from "./components/User/Usersuggestions/Usugg";
 
 function App() {
   // const demoUser = {
@@ -33,6 +35,15 @@ function App() {
           </Route>
           <Route path="/signup">
             <Signup />
+          </Route>
+          <Route path="/userhome">
+            <Userhome />
+          </Route>
+          <Route path="/ucom">
+            <Ucomplaints />
+          </Route>
+          <Route path="/usugg">
+            <Usuggestions/>
           </Route>
         </Switch>
       </Router>
