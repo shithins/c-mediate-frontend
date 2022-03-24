@@ -11,7 +11,7 @@ import Signup from "./components/Signup/Signup";
 import Userhome from "./components/User/Userhome/Userhome";
 import Ucomplaints from "./components/User/Usercomplaints/Ucomplaints";
 import Usuggestions from "./components/User/Usersuggestions/Usugg";
-
+import Navbar from "./components/Navbar/Navbar";
 function App() {
   // const demoUser = {
   //   phone: "7025638802",
@@ -21,10 +21,12 @@ function App() {
   // const[user, setUser] =useState({phone:""});
 
   return (
+    
     <div className="app-class">
       <div className="eclipse1">
         <div className="eclipse2"></div>
       </div>
+      <Navbar />
       <Router>
         <Switch>
           <Route exact path="/">

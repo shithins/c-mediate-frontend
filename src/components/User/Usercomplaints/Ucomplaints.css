@@ -1,40 +1,34 @@
-.Ucomplaints-main{
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-}
+
 
 .ucom-box-main{
-    position: absolute;
+    
     width: 790px;
     height: 810px;
-    right: 308px;
-    top: 150px;
-    background: rgba(192, 91, 194, 0.83);
-    mix-blend-mode: darken;
+    
+    
+    /* mix-blend-mode: darken; */
     border-radius: 72px;
     box-shadow: inset 2px 5px 8px 5px #5e5c5ccc;
 }
 
 .ucom-btns{
-    position: absolute;
-    width: 790px;
+    
+    
     height: 50px;
     top: 10px;
-    padding: 10px;
-    flex-wrap: wrap;
-    /* box-shadow: 0px 0px 0px 5px  black; */
-    /* background-color: red; */
+    padding: 10px 58px;
+    
+    
 }
 
 .ucom-btns>button{
-    height: 40px;
+    height: 44px;
     width: fit-content;
     min-width: 130px;
-    border-radius: 30px;
+    border-radius: 44px;
     position: relative;
     mix-blend-mode: lighten;
-    margin-left: 45px;
+    margin-left: 21px;
     margin-top: 20px;
     font-size: 1.4rem;
     font-weight: 600;
@@ -43,15 +37,18 @@
 
 .ucom-content-main{
     position: relative;
-    top: 100px;
-    left: 25px;
-    min-height: 690px;
-    width: 740px;
+    top: 25px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 690px;
+    width: 666px;
     /* border-top: 50px black; */
     border-radius: 50px  50px;
-    background-color: rgb(201, 197, 202);
-    mix-blend-mode: multiply;
+    background-color: #ffffff36;
+    /* mix-blend-mode: multiply; */
     overflow: scroll;
+    
+
 }
 
 .ucom-content-main::-webkit-scrollbar{ 
@@ -59,11 +56,12 @@
 }
 
 .com-box{
-    position: absolute;
-    background-color: rgb(238, 205, 238);
+   
+    background-color: rgb(255 255 255 / 55%);
     /* mix-blend-mode: darken; */
-    top: 40px;
-    left: 40px;
+    margin: 20px 50%;
+    padding: 5px;
+    transform: translate(-50%,0);
     height: fit-content;
     width: 550px;
     min-height: 70px;
@@ -74,4 +72,8 @@
     padding-left: 20px;
     text-align: justify;
     font-size: 1.7rem;
+}
+
+.com-box>img{
+    max-width: 500px;
 }
