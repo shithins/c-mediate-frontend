@@ -9,16 +9,10 @@ import {
 } from "react-router-dom";
 import Signup from "./components/Signup/Signup";
 import Userhome from "./components/User/Userhome/Userhome";
-import Ucomplaints from "./components/User/Usercomplaints/Ucomplaints";
-import Usuggestions from "./components/User/Usersuggestions/Usugg";
+
 import Navbar from "./components/Navbar/Navbar";
 function App() {
-  // const demoUser = {
-  //   phone: "7025638802",
-  //   password: "user123"
-  // }
-
-  // const[user, setUser] =useState({phone:""});
+  
 
   return (
     
@@ -38,15 +32,10 @@ function App() {
           <Route path="/signup">
             <Signup />
           </Route>
-          <Route path="/userhome">
+          <Route path="/user/home">
             <Userhome />
           </Route>
-          <Route path="/ucom">
-            <Ucomplaints />
-          </Route>
-          <Route path="/usugg">
-            <Usuggestions/>
-          </Route>
+         
         </Switch>
       </Router>
     </div>
