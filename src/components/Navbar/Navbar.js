@@ -1,15 +1,18 @@
-import React from 'react'
+import React , { useState } from 'react'
 import './Navbar.css'
 import avatar from '../../images/avatar.jpeg'
 
 
 function Navbar() {
+  const [showProopt, setProopt] = useState(false)
   return (
     <div className='nav-main'>
     <p>C-MEDIATE</p>
-    <img src={avatar} />
+    <img src={avatar} onClick={() => setProopt (true)}/>
     <div className="pro-menu">
-    <select name="" id=""></select>
+    {showProopt === <p>Add Complaint</p>}
+    {showProopt === <p>Add Suggestion</p>}
+    {showProopt === <p>Logout</p>}
     </div>
     </div>
   )
