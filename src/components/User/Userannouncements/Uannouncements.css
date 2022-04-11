@@ -1,6 +1,4 @@
-
-
-.ucom-box-main{
+.uann-box-main{
     
     width: 790px;
     height: 810px;
@@ -11,7 +9,7 @@
     box-shadow: inset 2px 5px 8px 5px #5e5c5ccc;
 }
 
-.ucom-btns{
+/* .ucom-btns{
     
     
     height: 50px;
@@ -19,9 +17,9 @@
     padding: 10px 58px;
     
     
-}
+} */
 
-.ucom-btns>button{
+/* .ucom-btns>button{
     height: 44px;
     width: fit-content;
     min-width: 130px;
@@ -33,15 +31,15 @@
     font-size: 1.4rem;
     font-weight: 600;
     font-family: sans-serif;
-}
+} */
 
-.ucom-content-main{
+.uann-content-main{
     position: relative;
-    top: 25px;
+    top: 35px;
     left: 50%;
     transform: translate(-50%, 0);
-    height: 690px;
-    width: 666px;
+    height: 742px;
+    width: 685px;
     /* border-top: 50px black; */
     border-radius: 50px  50px;
     background-color: #ffffff36;
@@ -51,15 +49,16 @@
 
 }
 
-.ucom-content-main::-webkit-scrollbar{ 
+.uann-content-main::-webkit-scrollbar{ 
     display: none;
 }
 
-.com-box{
+.ann-box{
    
     background-color: rgb(255 255 255 / 55%);
     /* mix-blend-mode: darken; */
     margin: 20px 50%;
+    padding: 20px ;
     transform: translate(-50%,0);
     height: fit-content;
     width: 550px;
@@ -67,64 +66,39 @@
     min-width: 180px;
     border-radius: 30px;
     color: black;
-    padding: 10px;
-    padding-left: 20px;
+    /* padding: 10px; */
+    /* padding-left: 30px; */
     text-align: justify;
     font-size: 1.7rem;
-}
-
-/* .com-box>h6{
-    font-size: 1.3rem;
-    font-weight: 550;
-    color: currentcolor;
     font-family: cursive;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-underline-position: under;
-} */
-
-.report-btn{
-    width: fit-content;
-    height: fit-content;
-     /* background-color: rgb(231, 46, 21); */
-    margin-left: 513px;
-    margin-top: 50px;
-    transform: scale(1.9);
-
-
 }
 
-.reply-area{
-    max-width: 550px;
-    max-height: fit-content;
-    
-}
-
-.reply-area>h6{
-    font-size: 1.7rem;
-    font-weight: 550;
-    margin-left: 20px;
-    color: currentcolor;
+.ann-box>h2{
+    font-size: 2.5rem;
     font-family: cursive;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-underline-position: under;
+    width: 539px;
+    word-break: break-all;
 }
 
-.reply-area>p{
-    background-color: rgb(255 255 255 / 55%);
-    mix-blend-mode: darken;
-    /* margin-right: 5px ; */
-    height: fit-content;
-    width: 500px;
-    border-radius: 30px;
-    color: black;
-    padding: 20px;
-    text-align: justify;
+.ann-box>h4{
     font-size: 1.5rem;
+    font-weight: 550;
     font-family: cursive;
 }
 
-.com-box>img{
-    max-width: 500px;
+
+.ann-box>button{
+    height: 40px;
+    width: fit-content;
+    min-width: 130px;
+    border-radius: 15px;
+    position: relative;
+    mix-blend-mode: lighten;
+    margin-left: 190px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: sans-serif;
+    color: black;
 }

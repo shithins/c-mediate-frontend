@@ -1,6 +1,7 @@
 import React from 'react';
 import './Ucomplaints.css';
 import samimg from '../../../images/img1.webp'
+import ReportIcon from '@mui/icons-material/ReportGmailerrorred';
 
 const Ucomplaints = () => {
   return (
@@ -31,6 +32,13 @@ const Ucomplaints = () => {
                  in classical literature.[2] McClintock first published his discovery 
                  in a 1994 letter to the editor of Before & After magazine, contesting the 
                  editor's earlier claim that Lorem ipsum held no meaning.[2]</p>
+                 <div className="report-btn">
+                 <ReportIcon />
+                 </div>
+                 <div className="reply-area">
+                  <h6>Reply</h6>
+                  <p>Vaiskah is gonna get suspension and de-barred immediatly</p>
+                 </div>
             </div>
 
             <div className="com-box">
@@ -49,6 +57,13 @@ const Ucomplaints = () => {
                  in classical literature.[2] McClintock first published his discovery 
                  in a 1994 letter to the editor of Before & After magazine, contesting the 
                  editor's earlier claim that Lorem ipsum held no meaning.[2]</p>
+                 <div className="report-btn">
+                 <ReportIcon />
+                 </div>
+                 <div className="reply-area">
+                  <h6>Reply</h6>
+                  <p>Vaiskah is gonna get suspension and de-barred immediatly</p>
+                 </div>
             </div>
             <div className="com-box">
               <p>The Lorem ipsum text is derived from sections 
@@ -66,6 +81,13 @@ const Ucomplaints = () => {
                  in classical literature.[2] McClintock first published his discovery 
                  in a 1994 letter to the editor of Before & After magazine, contesting the 
                  editor's earlier claim that Lorem ipsum held no meaning.[2]</p>
+                 <div className="report-btn">
+                 <ReportIcon />
+                 </div>
+                 <div className="reply-area">
+                  <h6>Reply</h6>
+                  <p>Vaiskah is gonna get suspension and de-barred immediatly</p>
+                 </div>
             </div>
             <div className="com-box">
               <p>The Lorem ipsum text is derived from sections 
@@ -84,6 +106,19 @@ const Ucomplaints = () => {
                  in a 1994 letter to the editor of Before & After magazine, contesting the 
                  editor's earlier claim that Lorem ipsum held no meaning.[2]</p>
                  <img src={samimg} />
+                 <div className="report-btn">
+                 <ReportIcon />
+                 </div>
+                 <div className="reply-area">
+                  <h6>Reply</h6>
+                  <p>Vaiskah is gonna get suspension and de-barred immediatly
+                  Lorem ipsum to Cicero's writing sometime before 1982 while searching
+                 for instances of the Latin word consectetur, which was rarely used 
+                 in classical literature.[2] McClintock first published his discovery 
+                 in a 1994 letter to the editor of Before & After magazine, contesting the 
+                 editor's earlier claim that Lorem ipsum held no meaning 
+                 </p>
+                 </div>
             </div>
             
           </div>

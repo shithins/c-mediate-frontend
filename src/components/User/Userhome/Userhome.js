@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import Ucomplaints from "../Usercomplaints/Ucomplaints";
 // import exploreimg from '../../../images/explore.svg'
 import Usuggestions from "../Usersuggestions/Usugg";
+import Uannouncements from "../Userannouncements/Uannouncements";
 const Userhome = () => {
   const history = useHistory();
   const [showPopup, setPopup] = useState("svg");
@@ -24,11 +25,19 @@ const Userhome = () => {
           Suggestions
         </button>
 
-        <button>Announcements</button>
+        <button
+        onClick={() => setPopup("announcements")}
+          style={{ background: showPopup === "announcements" && "darkcyan" }}
+          >
+          Announcements
+          </button>
+
       </div>
       <div className="home-popups">
         {showPopup === "complaint" && <Ucomplaints />}
         {showPopup === "suggestions" && <Usuggestions />}
+        {showPopup === "announcements" && <Uannouncements />}
+        
       </div>
     </div>
   );
