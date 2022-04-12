@@ -5,11 +5,15 @@ import Ucomplaints from "../Usercomplaints/Ucomplaints";
 // import exploreimg from '../../../images/explore.svg'
 import Usuggestions from "../Usersuggestions/Usugg";
 import Uannouncements from "../Userannouncements/Uannouncements";
-const Userhome = () => {
+import Addcomplaint from "../UserAddcomplaints/Addcomplaint";
+const Userhome = ( {setAddpopup , showAddpopup}) => {
   const history = useHistory();
   const [showPopup, setPopup] = useState("svg");
   return (
     <div className="userHome-main">
+    {showAddpopup === "complaint" &&
+    <Addcomplaint setAddpopup={setAddpopup}/>
+    }
       <div className="home-btns">
         <button
           onClick={() => setPopup("complaint")}
