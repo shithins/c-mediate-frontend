@@ -85,6 +85,9 @@
 
 
 }
+.report-btn :hover{
+    color: red;
+}
 
 .reply-area{
     max-width: 550px;
