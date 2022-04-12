@@ -14,8 +14,14 @@ const Loginpage = () => {
   const history = useHistory();
 
   useEffect(() => {
-    let user = localStorage.getItem("user");
-    if (user) successToast("gotIT");
+    let user = JSON.parse(localStorage.getItem("user"));
+    if (user?.user?.role === 3) {
+      history.push("/user/home");
+    } else if (user?.user?.role === 2) {
+      history.push("/management/home");
+    } else if (user?.user?.role === 1) {
+      history.push("/admin/home");
+    }
   }, []);
 
   const submitHandler = () => {

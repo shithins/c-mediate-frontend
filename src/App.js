@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Loginpage from "./components/Loginpage/Login";
 import {
@@ -12,7 +12,11 @@ import Userhome from "./components/User/Userhome/Userhome";
 
 import Navbar from "./components/Navbar/Navbar";
 function App() {
-  
+  const [user,setUser]= useState('')
+  useEffect(()=>{
+  setUser(JSON.parse(localStorage.getItem("user")))
+
+  },[])
 
   return (
     
@@ -20,7 +24,7 @@ function App() {
       <div className="eclipse1">
         <div className="eclipse2"></div>
       </div>
-      <Navbar />
+      <Navbar user={user} />
       <Router>
         <Switch>
           <Route exact path="/">
