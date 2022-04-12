@@ -12,7 +12,7 @@ import Userhome from "./components/User/Userhome/Userhome";
 
 import Navbar from "./components/Navbar/Navbar";
 function App() {
-  
+  const [showAddpopup , setAddpopup] = useState("close")
 
   return (
     
@@ -20,7 +20,7 @@ function App() {
       <div className="eclipse1">
         <div className="eclipse2"></div>
       </div>
-      <Navbar />
+      <Navbar setAddpopup={setAddpopup}/>
       <Router>
         <Switch>
           <Route exact path="/">
