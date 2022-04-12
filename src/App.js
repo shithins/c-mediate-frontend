@@ -12,11 +12,10 @@ import Userhome from "./components/User/Userhome/Userhome";
 
 import Navbar from "./components/Navbar/Navbar";
 function App() {
-  const [user,setUser]= useState('')
-  useEffect(()=>{
-  setUser(JSON.parse(localStorage.getItem("user")))
-
-  },[])
+ 
+  const [showAddpopup , setAddpopup] = useState("close")
+ 
+  
 
   return (
     
@@ -24,7 +23,8 @@ function App() {
       <div className="eclipse1">
         <div className="eclipse2"></div>
       </div>
-      <Navbar user={user} />
+     
+      <Navbar setAddpopup={setAddpopup}/>
       <Router>
         <Switch>
           <Route exact path="/">

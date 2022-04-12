@@ -1,131 +1,73 @@
-import React from 'react';
-import './Ucomplaints.css';
-import samimg from '../../../images/img1.webp'
-import ReportIcon from '@mui/icons-material/ReportGmailerrorred';
+import React, { useEffect, useState } from "react";
+import "./Ucomplaints.css";
+import samimg from "../../../images/img1.webp";
+import ReportIcon from "@mui/icons-material/ReportGmailerrorred";
+import Axios from "../../../constant/axios";
+import { errorToast, infoToast } from "../../../constant/toast";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const Ucomplaints = () => {
+  const [complaints, setComplaints] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    Axios.get("/complaint/get/All")
+      .then(({ data }) => {
+        setLoading(false);
+        if (data.status) {
+          setComplaints(data.complaint);
+        } else infoToast(data.message || "something wrong");
+      })
+      .catch((e) => {
+        setLoading(false);
+        errorToast("something wrong");
+      });
+  }, []);
+
   return (
-    
-        
-
-        <div className="ucom-box-main">
-          <div className="ucom-btns">
-            <button>All</button>
-            <button>My Complaints</button>
-            <button>Solved</button>
-            <button>Blocked</button>
+    <div className="ucom-box-main">
+      <div className="ucom-btns">
+        <button>All</button>
+        <button>My Complaints</button>
+        <button>Solved</button>
+        <button>Blocked</button>
+      </div>
+      <div className="ucom-content-main">
+        {loading && (
+          <div className="com-box">
+            <center>
+              <Box>
+                <CircularProgress />
+              </Box>
+            </center>
           </div>
-          <div className="ucom-content-main">
-            <div className="com-box">
-              <p>The Lorem ipsum text is derived from sections 
-              1.10.32 and 1.10.33 of Cicero's 'De finibus bonorum et
-               malorum'.[7][8] The physical source may have been the 
-               1914 Loeb Classical Library edition of De finibus, 
-               where the Latin text, presented on the left-hand (even) pages,
-                breaks off on page 34 with "Neque porro quisquam est qui do-"
-                 and continues on page 36 with "lorem ipsum ...", suggesting 
-                 that the galley type of that page was mixed up to make the dummy text seen today.
-              The discovery of the text's origin is attributed to Richard McClintock,
-               a Latin scholar at Hampden Sydney College. McClintock connected
-                Lorem ipsum to Cicero's writing sometime before 1982 while searching
-                 for instances of the Latin word consectetur, which was rarely used 
-                 in classical literature.[2] McClintock first published his discovery 
-                 in a 1994 letter to the editor of Before & After magazine, contesting the 
-                 editor's earlier claim that Lorem ipsum held no meaning.[2]</p>
-                 <div className="report-btn">
-                 <ReportIcon />
-                 </div>
-                 <div className="reply-area">
-                  <h6>Reply</h6>
-                  <p>Vaiskah is gonna get suspension and de-barred immediatly</p>
-                 </div>
-            </div>
-
-            <div className="com-box">
-              <p>The Lorem ipsum text is derived from sections 
-              1.10.32 and 1.10.33 of Cicero's 'De finibus bonorum et
-               malorum'.[7][8] The physical source may have been the 
-               1914 Loeb Classical Library edition of De finibus, 
-               where the Latin text, presented on the left-hand (even) pages,
-                breaks off on page 34 with "Neque porro quisquam est qui do-"
-                 and continues on page 36 with "lorem ipsum ...", suggesting 
-                 that the galley type of that page was mixed up to make the dummy text seen today.
-              The discovery of the text's origin is attributed to Richard McClintock,
-               a Latin scholar at Hampden Sydney College. McClintock connected
-                Lorem ipsum to Cicero's writing sometime before 1982 while searching
-                 for instances of the Latin word consectetur, which was rarely used 
-                 in classical literature.[2] McClintock first published his discovery 
-                 in a 1994 letter to the editor of Before & After magazine, contesting the 
-                 editor's earlier claim that Lorem ipsum held no meaning.[2]</p>
-                 <div className="report-btn">
-                 <ReportIcon />
-                 </div>
-                 <div className="reply-area">
-                  <h6>Reply</h6>
-                  <p>Vaiskah is gonna get suspension and de-barred immediatly</p>
-                 </div>
-            </div>
-            <div className="com-box">
-              <p>The Lorem ipsum text is derived from sections 
-              1.10.32 and 1.10.33 of Cicero's 'De finibus bonorum et
-               malorum'.[7][8] The physical source may have been the 
-               1914 Loeb Classical Library edition of De finibus, 
-               where the Latin text, presented on the left-hand (even) pages,
-                breaks off on page 34 with "Neque porro quisquam est qui do-"
-                 and continues on page 36 with "lorem ipsum ...", suggesting 
-                 that the galley type of that page was mixed up to make the dummy text seen today.
-              The discovery of the text's origin is attributed to Richard McClintock,
-               a Latin scholar at Hampden Sydney College. McClintock connected
-                Lorem ipsum to Cicero's writing sometime before 1982 while searching
-                 for instances of the Latin word consectetur, which was rarely used 
-                 in classical literature.[2] McClintock first published his discovery 
-                 in a 1994 letter to the editor of Before & After magazine, contesting the 
-                 editor's earlier claim that Lorem ipsum held no meaning.[2]</p>
-                 <div className="report-btn">
-                 <ReportIcon />
-                 </div>
-                 <div className="reply-area">
-                  <h6>Reply</h6>
-                  <p>Vaiskah is gonna get suspension and de-barred immediatly</p>
-                 </div>
-            </div>
-            <div className="com-box">
-              <p>The Lorem ipsum text is derived from sections 
-              1.10.32 and 1.10.33 of Cicero's 'De finibus bonorum et
-               malorum'.[7][8] The physical source may have been the 
-               1914 Loeb Classical Library edition of De finibus, 
-               where the Latin text, presented on the left-hand (even) pages,
-                breaks off on page 34 with "Neque porro quisquam est qui do-"
-                 and continues on page 36 with "lorem ipsum ...", suggesting 
-                 that the galley type of that page was mixed up to make the dummy text seen today.
-              The discovery of the text's origin is attributed to Richard McClintock,
-               a Latin scholar at Hampden Sydney College. McClintock connected
-                Lorem ipsum to Cicero's writing sometime before 1982 while searching
-                 for instances of the Latin word consectetur, which was rarely used 
-                 in classical literature.[2] McClintock first published his discovery 
-                 in a 1994 letter to the editor of Before & After magazine, contesting the 
-                 editor's earlier claim that Lorem ipsum held no meaning.[2]</p>
-                 <img src={samimg} />
-                 <div className="report-btn">
-                 <ReportIcon />
-                 </div>
-                 <div className="reply-area">
-                  <h6>Reply</h6>
-                  <p>Vaiskah is gonna get suspension and de-barred immediatly
-                  Lorem ipsum to Cicero's writing sometime before 1982 while searching
-                 for instances of the Latin word consectetur, which was rarely used 
-                 in classical literature.[2] McClintock first published his discovery 
-                 in a 1994 letter to the editor of Before & After magazine, contesting the 
-                 editor's earlier claim that Lorem ipsum held no meaning 
-                 </p>
-                 </div>
-            </div>
-            
+        )}
+        {!loading && complaints.length === 0 && (
+          <div className="com-box">
+            <center>No complaints</center>
           </div>
-        </div>
-
-    
-  )
+        )}
+        {complaints.length !== 0 &&
+          complaints.map((item) => {
+            return (
+              <div className="com-box">
+                <p>{item.message}</p>
+                <div className="report-btn">
+                  <ReportIcon />
+                </div>
+                <div className="reply-area">
+                  <h6>Reply</h6>
+                  <p>
+                    Vaiskah is gonna get suspension and de-barred immediatly
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+      </div>
+    </div>
+  );
 };
 
 export default Ucomplaints;
