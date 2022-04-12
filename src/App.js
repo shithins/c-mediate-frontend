@@ -33,7 +33,7 @@ function App() {
             <Signup />
           </Route>
           <Route path="/user/home">
-            <Userhome />
+            <Userhome setAddpopup={setAddpopup} showAddpopup={showAddpopup}/>
           </Route>
          
         </Switch>
