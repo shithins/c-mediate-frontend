@@ -6,6 +6,9 @@ import Axios from "../../../constant/axios";
 import { errorToast, infoToast } from "../../../constant/toast";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EditIcon from '@mui/icons-material/Edit';
+import Swal from 'sweetalert2'
 
 const Ucomplaints = () => {
   const [complaints, setComplaints] = useState([]);
@@ -47,6 +50,28 @@ const Ucomplaints = () => {
         });
     }
   }, [options]);
+
+  const reportComplaint=_id=>{
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor:'#d33',
+      cancelButtonColor:'#3085d6' ,
+      confirmButtonText: 'Report !'
+    }).then((result) => {
+      if (result.isConfirmed) {
+       Axios.post('/complaint/report',{_id}).then(({data})=>{
+         if(data.status){
+          Swal.fire('Reported!', '', 'success')
+          setComplaints(complaints.filter(i=> i._id !== _id))
+         }else{
+          Swal.fire('Failed!', data.message || 'something wrong', 'error')
+         }
+       }).catch(e=> Swal.fire('Failed !','something wrong','error'))
+      }
+    })
+  }
 
   return (
     <div className="ucom-box-main">
@@ -98,9 +123,15 @@ const Ucomplaints = () => {
               <div className="com-box">
                 <p>{item.message}</p>
                 {
-                  options ==='All' &&
-                <div className="report-btn">
+                  options ==='All' ?
+                <div className="report-btn" onClick={()=>reportComplaint(item._id)}>
                   <ReportIcon />
+                </div>
+                :
+                <div className="report-btn"  style={{    display: 'flex' ,marginLeft: '472px'}}>
+                  <EditIcon onClick={()=> alert('koii')} />
+                
+                  <DeleteForeverIcon onClick={()=> alert('koii1')}/>
                 </div>
                 }
                 {
