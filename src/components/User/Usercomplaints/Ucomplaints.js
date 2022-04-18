@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Ucomplaints.css";
 import samimg from "../../../images/img1.webp";
 import ReportIcon from "@mui/icons-material/ReportGmailerrorred";
-import Axios from "../../../constant/axios";
 import { errorToast, infoToast } from "../../../constant/toast";
+import Axios from "../../../constant/axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -73,6 +73,26 @@ const Ucomplaints = () => {
     })
   }
 
+  const deleteHandler=_id=>{
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor:'#d33',
+      cancelButtonColor:'#3085d6' ,
+      confirmButtonText: 'Delete !'
+    }).then((result) => {
+      if(result.isConfirmed){
+        Axios.post('/complaint/delete',{_id}).then(({data})=>{
+          if(data.status){
+            Swal.fire('Deleted!', '', 'success')
+            setComplaints(complaints.filter(i=> i._id !== _id))
+          }else Swal.fire('Failed!', data.message || 'something wrong', 'error')
+        }).catch(e=> Swal.fire('Failed !','something wrong','error'))
+      }
+    })
+  }
+
   return (
     <div className="ucom-box-main">
       <div className="ucom-btns">
@@ -131,7 +151,7 @@ const Ucomplaints = () => {
                 <div className="report-btn"  style={{    display: 'flex' ,marginLeft: '472px'}}>
                   <EditIcon onClick={()=> alert('koii')} />
                 
-                  <DeleteForeverIcon onClick={()=> alert('koii1')}/>
+                  <DeleteForeverIcon onClick={()=> deleteHandler(item._id)}/>
                 </div>
                 }
                 {
