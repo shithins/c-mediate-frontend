@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Ucomplaints.css";
 import samimg from "../../../images/img1.webp";
 import ReportIcon from "@mui/icons-material/ReportGmailerrorred";
-import { errorToast, infoToast } from "../../../constant/toast";
+import { errorToast, infoToast, successToast } from "../../../constant/toast";
 import Axios from "../../../constant/axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
@@ -85,7 +85,7 @@ const Ucomplaints = () => {
       if(result.isConfirmed){
         Axios.post('/complaint/delete',{_id}).then(({data})=>{
           if(data.status){
-            Swal.fire('Deleted!', '', 'success')
+            successToast("Deleted")
             setComplaints(complaints.filter(i=> i._id !== _id))
           }else Swal.fire('Failed!', data.message || 'something wrong', 'error')
         }).catch(e=> Swal.fire('Failed !','something wrong','error'))
