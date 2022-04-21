@@ -4,14 +4,23 @@
     height: 100vh;
 }
 
-
+.login-imgbox{
+    position: absolute;
+    left: 430px;
+    top: 171px;
+    
+    mix-blend-mode: multiply;
+}
+.login-imgbox>img{
+    width: 769px;
+}
 
 .login-mainbox{
     position: absolute;
     width: 561px;
     height: 651px;
     right: 300px;
-    top: 150px;
+    top: 245px;
     background: #dbd9d9;
     mix-blend-mode: overlay;
     border-radius: 47px;

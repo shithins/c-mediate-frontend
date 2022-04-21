@@ -8,7 +8,7 @@ import Addcomplaint from "../UserAddcomplaints/Addcomplaint";
 import Addsuggestions from "../UserAddsuggestions/Addsuggestions";
 import Editsuggestion from "../Editsuggestion/Editsuggestion";
 import Editcomplaint from "../Editcomplaint/Editcomplaint";
-
+import Gif from "../../Gif/Gif";
 
 const Userhome = ({ setAddpopup, showAddpopup }) => {
   const history = useHistory();
@@ -85,7 +85,7 @@ const Userhome = ({ setAddpopup, showAddpopup }) => {
         )}
         {showPopup === "announcements" && <Uannouncements />}
       </div>
-      
+     {showPopup ==="svg" && <Gif/>}
     </div>
   );
 };

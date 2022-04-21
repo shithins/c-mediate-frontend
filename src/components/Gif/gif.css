@@ -1,0 +1,39 @@
+.gif-main {
+  position: absolute;
+  top: 288px;
+  mix-blend-mode: multiply;
+  animation: roll 6s infinite ;
+  right: 428px;
+    
+}
+.gif-main > img {
+  width: 754px;
+  border-radius: 48%;
+  box-shadow: 0px 0px 32px 18px rgb(193 176 176 / 90%);
+}
+
+
+@keyframes roll {
+    
+  0% {
+    top: 200px;
+    right: 428px;
+  }
+  25%{
+    top: 288px;
+    right: 428px;
+  }
+  50%{
+    top: 200px;
+    right: 428px;
+  }
+  75%{
+    top: 288px;
+    right: 428px;
+  }
+ 
+  100% {
+    top: 200px;
+    right: 428px;
+  }
+}
