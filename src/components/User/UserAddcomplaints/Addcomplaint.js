@@ -1,7 +1,7 @@
 import React from "react";
 import './Addcomplaint.css';
 import CloseIcon from '@mui/icons-material/Close';
-// import AddPhotoIcon from '@mui/icons-material/AddPhotoAlternate';
+
 
 const Addcomplaint = ({setAddpopup}) => {
     return(
