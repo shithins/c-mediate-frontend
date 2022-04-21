@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import Signup from "./components/Signup/Signup";
 import Userhome from "./components/User/Userhome/Userhome";
-
+import Managehome from "./components/Management/Home/Mhome";
 import Navbar from "./components/Navbar/Navbar";
 import { ToastContainer } from "react-toastify";
 function App() {
@@ -40,7 +40,9 @@ function App() {
           <Route path="/user/home">
             <Userhome setAddpopup={setAddpopup} showAddpopup={showAddpopup}/>
           </Route>
-         
+         <Route path="/management/home">
+            <Managehome />
+         </Route>
         </Switch>
       </Router>
       <ToastContainer />

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Ucomplaints.css";
-import samimg from "../../../images/img1.webp";
 import ReportIcon from "@mui/icons-material/ReportGmailerrorred";
 import { errorToast, infoToast, successToast } from "../../../constant/toast";
 import Axios from "../../../constant/axios";

@@ -1,0 +1,103 @@
+.mcom-box-main{
+    
+    width: 790px;
+    height: 810px;
+    border-radius: 72px;
+    box-shadow: inset 2px 5px 8px 5px #5e5c5ccc;
+}
+
+.mcom-btns{
+
+    height: 50px;
+    top: 10px;
+    padding: 10px 58px;
+    
+}
+
+.mcom-btns>button{
+    height: 44px;
+    width: fit-content;
+    min-width: 130px;
+    border-radius: 44px;
+    position: relative;
+    mix-blend-mode: lighten;
+    margin-left: 131px;
+    margin-top: 20px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: sans-serif;
+
+}
+
+.mcom-content-main{
+    position: relative;
+    top: 25px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 690px;
+    width: 666px;
+    /* border-top: 50px black; */
+    border-radius: 50px  50px;
+    background-color: #ffffff36;
+    /* mix-blend-mode: multiply; */
+    overflow: scroll;
+    
+
+}
+
+.mcom-content-main::-webkit-scrollbar{ 
+    display: none;
+}
+
+.mcom-box{
+   
+    background-color: rgb(255 255 255 / 55%);
+    /* mix-blend-mode: darken; */
+    margin: 20px 50%;
+    transform: translate(-50%,0);
+    height: fit-content;
+    width: 550px;
+    min-height: 70px;
+    min-width: 180px;
+    border-radius: 30px;
+    color: black;
+    padding: 10px;
+    padding-left: 20px;
+    text-align: justify;
+    font-size: 1.7rem;
+}
+
+.status-btns>button{
+    height: 44px;
+    width: -moz-fit-content;
+    width: fit-content;
+    min-width: 130px;
+    border-radius: 44px;
+    position: relative;
+    mix-blend-mode: darken;
+    margin-left: 28px;
+    margin-bottom: 21px;
+    margin-top: 20px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: sans-serif;
+    color: white;
+}
+
+.status-btns>button:nth-child(1){
+    background: rgba(82, 70, 190, 0.932);
+}
+
+.status-btns>button:nth-child(2){
+    background: rgb(27, 145, 27);
+}
+
+.status-btns>button:nth-child(3){
+    background: rgb(216, 46, 54);
+}
+
+
+.mcom-box>img{
+    max-width: 500px;
+    border-radius: 20px;
+}
