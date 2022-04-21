@@ -32,7 +32,7 @@ function Navbar({ setAddpopup }) {
         }
       } else if (user.user.role === 2) {
         if (window.location.pathname.split("/")[1] !== "management") {
-          window.location.href = "/sk/home";
+          window.location.href = "/management/home";
         }
       } else if (user.user.role === 3) {
         if (

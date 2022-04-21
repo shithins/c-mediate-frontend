@@ -1,0 +1,49 @@
+.Mhome-main{
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+}
+
+
+
+.mhome-btns{
+    position: absolute;
+    height: 100%;
+    
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.mhome-btns>button{
+    
+    width: 376px;
+    height: 94px;
+    left: 308px;
+    top: 280px;
+    background: #ece8e8;
+    mix-blend-mode: darken;
+    border-radius: 30px;
+    box-shadow: 5px 10px rgba(190, 26, 193, 0.623);
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.mhome-btns>button:active{
+    background-color: rgb(230, 121, 245);
+}
+
+.mhome-popups{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
