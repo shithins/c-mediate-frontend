@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "./Userhome.css";
 import { useHistory } from "react-router-dom";
 import Ucomplaints from "../Usercomplaints/Ucomplaints";
-// import exploreimg from '../../../images/explore.svg'
 import Usuggestions from "../Usersuggestions/Usugg";
 import Uannouncements from "../Userannouncements/Uannouncements";
 import Addcomplaint from "../UserAddcomplaints/Addcomplaint";
+import Addsuggestions from "../UserAddsuggestions/Addsuggestions";
 const Userhome = ( {setAddpopup , showAddpopup}) => {
   const history = useHistory();
   const [showPopup, setPopup] = useState("svg");
@@ -13,6 +13,9 @@ const Userhome = ( {setAddpopup , showAddpopup}) => {
     <div className="userHome-main">
     {showAddpopup === "complaint" &&
     <Addcomplaint setAddpopup={setAddpopup}/>
+    }
+    {showAddpopup === "suggestion" &&
+    <Addsuggestions setAddpopup={setAddpopup}/>
     }
       <div className="home-btns">
         <button

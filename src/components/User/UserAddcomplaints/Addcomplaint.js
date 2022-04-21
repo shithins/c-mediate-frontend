@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Addcomplaint.css";
 import CloseIcon from "@mui/icons-material/Close";
-// import AddPhotoIcon from '@mui/icons-material/AddPhotoAlternate';
+
 import { uploadFile } from "../../../constant/functions";
 import { errorToast, infoToast, successToast } from "../../../constant/toast";
 import Axios from "../../../constant/axios";
@@ -39,7 +39,7 @@ const Addcomplaint = ({ setAddpopup }) => {
     if (message === "") return infoToast("missing data");
     setLoading(true);
     if (file) {
-      uploadFile(file, "complaints",setProgress)
+      uploadFile(file, "complaints", setProgress)
         .then((r) => uploadData({ message, image: { id: r.id, url: r.url } }))
         .catch((e) => {
           setLoading(false);
