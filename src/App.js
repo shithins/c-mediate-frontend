@@ -11,6 +11,7 @@ import Signup from "./components/Signup/Signup";
 import Userhome from "./components/User/Userhome/Userhome";
 
 import Navbar from "./components/Navbar/Navbar";
+import { ToastContainer } from "react-toastify";
 function App() {
  
   const [showAddpopup , setAddpopup] = useState("close")
@@ -42,6 +43,7 @@ function App() {
          
         </Switch>
       </Router>
+      <ToastContainer />
     </div>
   );
 }

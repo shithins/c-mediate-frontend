@@ -140,7 +140,7 @@ const Ucomplaints = () => {
           !loading &&
           complaints.map((item) => {
             return (
-              <div className="com-box">
+              <div className="com-box" key={item._id}>
                 <p>{item.message}</p>
                 {
                   options ==='All' ?
@@ -153,6 +153,9 @@ const Ucomplaints = () => {
                 
                   <DeleteForeverIcon onClick={()=> deleteHandler(item._id)}/>
                 </div>
+                }
+                {
+                  item.image && <img src={item.image.url} alt="image not supported"/>
                 }
                 {
                   options !== 'All' && item.reply &&

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useHistory} from 'react-router-dom';
 import './Signup.css';
 import { SignupNumber, Verifyotp, Cpassword } from "./Signupsub";
-import { ToastContainer } from "react-toastify";
+
 
 export default function Signup ()  {
     const [page,setPage]=useState("mobile")
@@ -23,7 +23,7 @@ export default function Signup ()  {
       
         </div>
             </div>
-            <ToastContainer />
+          
         </div>
 
     )

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
-import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import { errorToast, successToast } from "../../constant/toast";
 import Axios from "../../constant/axios";
@@ -87,7 +87,7 @@ const Loginpage = () => {
         </div>
       </div>
 
-      <ToastContainer />
+      
     </div>
   );
 };
