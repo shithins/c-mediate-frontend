@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./Ucomplaints.css";
 import ReportIcon from "@mui/icons-material/ReportGmailerrorred";
+import { errorToast, infoToast, successToast } from "../../../constant/toast";
 import Axios from "../../../constant/axios";
-import { errorToast, infoToast } from "../../../constant/toast";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import EditIcon from "@mui/icons-material/Edit";
+import Swal from "sweetalert2";
+import { deleteFile } from "../../../constant/functions";
+import ImageViewer from "react-simple-image-viewer";
 
-const Ucomplaints = () => {
-  const [complaints, setComplaints] = useState([]);
+const Ucomplaints = ({
+  setEditPop,
+  setSelectedComplaint,
+  complaints,
+  setComplaints,
+}) => {
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState("All");
+  const [isViewerOpen, setIsViewerOpen] = useState("");
   useEffect(() => {
     setLoading(true);
     if (options === "All") {
@@ -46,6 +56,56 @@ const Ucomplaints = () => {
         });
     }
   }, [options]);
+
+  const reportComplaint = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Report !",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Axios.post("/complaint/report", { _id })
+          .then(({ data }) => {
+            if (data.status) {
+              Swal.fire("Reported!", "", "success");
+              setComplaints(complaints.filter((i) => i._id !== _id));
+            } else {
+              Swal.fire("Failed!", data.message || "something wrong", "error");
+            }
+          })
+          .catch((e) => Swal.fire("Failed !", "something wrong", "error"));
+      }
+    });
+  };
+
+  const deleteHandler = (_id, image) => {
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Delete !",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Axios.post("/complaint/delete", { _id })
+          .then(({ data }) => {
+            if (data.status) {
+              if (image) {
+                deleteFile(image.id, "complaints");
+              }
+              successToast("Deleted");
+              setComplaints(complaints.filter((i) => i._id !== _id));
+            } else
+              Swal.fire("Failed!", data.message || "something wrong", "error");
+          })
+          .catch((e) => Swal.fire("Failed !", "something wrong", "error"));
+      }
+    });
+  };
 
   return (
     <div className="ucom-box-main">
@@ -94,27 +154,65 @@ const Ucomplaints = () => {
           !loading &&
           complaints.map((item) => {
             return (
-              <div className="com-box">
+              <div className="com-box" key={item._id}>
                 <p>{item.message}</p>
-                {
-                  options ==='All' &&
-                <div className="report-btn">
-                  <ReportIcon />
-                </div>
-                }
-                {
-                  options !== 'All' && item.reply &&
-                <div className="reply-area">
-                  <h6>Reply</h6>
-                  <p>
-                    {item.reply}
-                  </p>
-                </div>
-                }
+                {item.image && (
+                  <img
+                    src={item.image.url}
+                    alt="image not supported"
+                    onClick={() => setIsViewerOpen(item.image.url)}
+                  />
+                )}
+                {options === "All" ? (
+                  <div
+                    className="report-btn"
+                    onClick={() => reportComplaint(item._id)}
+                  >
+                    <ReportIcon />
+                  </div>
+                ) : (
+                  <div
+                    className="report-btn"
+                    style={{ display: "flex", marginLeft: "472px" }}
+                  >
+                    {options === "Mycom" && (
+                      <EditIcon
+                        onClick={() => {
+                          setSelectedComplaint(item);
+                          setEditPop("complaint");
+                        }}
+                      />
+                    )}
+                    <DeleteForeverIcon
+                      onClick={() =>
+                        deleteHandler(item._id, item.image ? item.image : null)
+                      }
+                    />
+                  </div>
+                )}
+
+                {options !== "All" && item.reply && (
+                  <div className="reply-area">
+                    <h6>Reply</h6>
+                    <p>{item.reply}</p>
+                  </div>
+                )}
               </div>
             );
           })}
       </div>
+      {isViewerOpen && (
+        <ImageViewer
+          src={[`${isViewerOpen}`]}
+          currentIndex={0}
+          onClose={() => setIsViewerOpen("")}
+          disableScroll={true}
+          backgroundStyle={{
+            backgroundColor: "rgba(0,0,0,0.9)",
+          }}
+          closeOnClickOutside={true}
+        />
+      )}
     </div>
   );
 };

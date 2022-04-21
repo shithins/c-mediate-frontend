@@ -3,7 +3,16 @@
     width: 100vw;
     height: 100vh;
 }
-
+.signup-imgbox{
+    position: absolute;
+    left: 430px;
+    top: 171px;
+    
+    mix-blend-mode: multiply;
+}
+.signup-imgbox>img{
+    width: 769px;
+}
 .signup-box{
     position: absolute;
     width: 561px;

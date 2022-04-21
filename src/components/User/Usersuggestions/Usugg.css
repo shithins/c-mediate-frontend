@@ -72,3 +72,21 @@
     text-align: justify;
     font-size: 1.7rem;
 }
+.sugg-actionbtns>button{
+    margin: 18px;
+    padding: 4px;
+    border-radius: 50%;
+    border: none;
+    transition: all .3s ease-in;
+    transform: scale(1.4);
+}
+.sugg-actionbtns>.sEdit{
+    background-color: aquamarine;
+}
+.sugg-actionbtns>button:nth-child(2){
+    color: white;
+    background-color: rgb(245, 64, 40);
+}
+.sugg-actionbtns>button:hover{
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.2);
+}

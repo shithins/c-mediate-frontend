@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
-import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import { errorToast, successToast } from "../../constant/toast";
 import Axios from "../../constant/axios";
 import { useHistory } from "react-router-dom";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
-
+import Logingif from '../../images/login.gif'
 const Loginpage = () => {
   const [loading, setLoading] = useState(false);
   const [details, setDetails] = useState({ mobile: "", password: "" });
@@ -45,9 +45,12 @@ const Loginpage = () => {
 
   return (
     <div className="login-main">
+      <div className="login-imgbox" >
+          <img src={Logingif}/>
+        </div>
       <div className="login-mainbox">
         <h2>LOGIN</h2>
-
+        
         <div className="login-textbox1">
           <input
             type="text"
@@ -87,7 +90,7 @@ const Loginpage = () => {
         </div>
       </div>
 
-      <ToastContainer />
+      
     </div>
   );
 };

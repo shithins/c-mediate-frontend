@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useHistory} from 'react-router-dom';
 import './Signup.css';
 import { SignupNumber, Verifyotp, Cpassword } from "./Signupsub";
-import { ToastContainer } from "react-toastify";
+import Logingif from '../../images/login.gif'
 
 export default function Signup ()  {
     const [page,setPage]=useState("mobile")
@@ -14,6 +14,9 @@ export default function Signup ()  {
     
     return(
         <div className="SignupMain">
+            <div className="signup-imgbox" >
+          <img src={Logingif}/>
+        </div>
             <div className="signup-box">
                 {page ==="mobile"&&<SignupNumber setPage={setPage} mobile={mobile} setMobile={setMobile} loading={loading} setLoading={setLoading} setOtp={setOtp} />}
                 {page ==='otp'&& <Verifyotp setPage={setPage} mobile={mobile} otp={otp} setOtp={setOtp} loading={loading} setLoading={setLoading}/>}
@@ -23,7 +26,7 @@ export default function Signup ()  {
       
         </div>
             </div>
-            <ToastContainer />
+          
         </div>
 
     )

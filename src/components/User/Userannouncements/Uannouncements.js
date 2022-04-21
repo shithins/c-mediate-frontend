@@ -1,89 +1,66 @@
-import React from "react";
-import './Uannouncements.css'
+import React, { useEffect, useState } from "react";
+import { infoToast } from "../../../constant/toast";
+import "./Uannouncements.css";
+import Axios from "../../../constant/axios";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const Uannouncements = () => {
-    return(
-        <div className="uann-box-main">
-          
-          <div className="uann-content-main">
-            <div className="ann-box">
-                <h2>Heading</h2>
-                <h4>00/00/0000</h4>
-              <p>The Lorem ipsum text is derived from sections 
-              1.10.32 and 1.10.33 of Cicero's 'De finibus bonorum et
-               malorum'.[7][8] The physical source may have been the 
-               1914 Loeb Classical Library edition of De finibus, 
-               where the Latin text, presented on the left-hand (even) pages,
-                breaks off on page 34 with "Neque porro quisquam est qui do-"
-                 and continues on page 36 with "lorem ipsum ...", suggesting 
-                 that the galley type of that page was mixed up to make the dummy text seen today.
-              </p>
-                <button>Get Details</button>
-            </div>
+  const [announcement, setAnnouncement] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    Axios.get("/announcement/get")
+      .then(({ data }) => {
+        setLoading(false);
+        if (data.status) {
+          setAnnouncement(data.announcement);
+        } else infoToast(data.message || "something wrong please reload");
+      })
+      .catch((e) => {
+        setLoading(false);
+        infoToast("something wrong please reload");
+      });
+  }, []);
 
-            <div className="ann-box">
-                <h2>Heading</h2>
-                <h4>00/00/0000</h4>
-              <p>The Lorem ipsum text is derived from sections 
-              1.10.32 and 1.10.33 of Cicero's 'De finibus bonorum et
-               malorum'.[7][8] The physical source may have been the 
-               1914 Loeb Classical Library edition of De finibus, 
-               where the Latin text, presented on the left-hand (even) pages,
-                breaks off on page 34 with "Neque porro quisquam est qui do-"
-                 and continues on page 36 with "lorem ipsum ...", suggesting 
-                 that the galley type of that page was mixed up to make the dummy text seen today.
-                 1914 Loeb Classical Library edition of De finibus, 
-               where the Latin text, presented on the left-hand (even) pages,
-                breaks off on page 34 with "Neque porro quisquam est qui do-"
-                 and continues on page 36 with "lorem ipsum ...", suggesting 
-                 that the galley type of that page was mixed up to make the dummy text seen today.
-              </p>
-                <button>Get Details</button>
-            </div>
-
-            <div className="ann-box">
-                <h2>Heading</h2>
-                <h4>00/00/0000</h4>
-              <p>The Lorem ipsum text is derived from sections 
-              1.10.32 and 1.10.33 of Cicero's 'De finibus bonorum et
-               malorum'.[7][8] The physical source may have been the 
-               1914 Loeb Classical Library edition of De finibus, 
-               where the Latin text
-              </p>
-                <button>Get Details</button>
-            </div>
-
-            <div className="ann-box">
-                <h2>Heading</h2>
-                <h4>00/00/0000</h4>
-              <p>The Lorem ipsum text is derived from sections 
-              1.10.32 and 1.10.33 of Cicero's 'De finibus bonorum et
-               malorum'.[7][8] The physical source may have been the 
-               1914 Loeb Classical Library edition of De finibus, 
-               where the Latin text, presented on the left-hand (even) pages,
-                breaks off on page 34 with "Neque porro quisquam est qui do-"
-                 and continues on page 36 with "lorem ipsum ...", suggesting 
-                 that the galley type of that page was mixed up to make the dummy text seen today.
-                 1914 Loeb Classical Library edition of De finibus, 
-               where the Latin text, presented on the left-hand (even) pages,
-                breaks off on page 34 with "Neque porro quisquam est qui do-"
-                 and continues on page 36 with "lorem ipsum ...", suggesting 
-                 that the galley type of that page was mixed up to make the dummy text seen today.1914 Loeb Classical Library edition of De finibus, 
-                 where the Latin text, presented on the left-hand (even) pages,
-                  breaks off on page 34 with "Neque porro quisquam est qui do-"
-                   and continues on page 36 with "lorem ipsum ...", suggesting 
-                   that the galley type of that page was mixed up to make the dummy text seen today.
-              </p>
-                <button>Get Details</button>
-            </div>
-
-            
-                 
-            
-            
+  return (
+    <div className="uann-box-main">
+      <div className="uann-content-main">
+        {loading && (
+          <div className="ann-box">
+            <center>
+              <Box>
+                <CircularProgress />
+              </Box>
+            </center>
           </div>
-        </div>
-    )
+        )}
+        {!loading && announcement.length === 0 && (
+          <div className="ann-box">
+            <center>No announcement</center>
+          </div>
+        )}
+        {!loading &&
+          announcement !== 0 &&
+          announcement.map((item) => {
+            return (
+              <div className="ann-box">
+                <h2>{item.title}</h2>
+                <h4>{new Date(item.dueDate).toLocaleDateString()}</h4>
+                <p>{item.message}</p>
+                {item.pdf && (
+                  <button
+                    onClick={() => (window.location.href = `${item.pdf.url}`)}
+                  >
+                    Get Details
+                  </button>
+                )}
+              </div>
+            );
+          })}
+      </div>
+    </div>
+  );
 };
 
 export default Uannouncements;
