@@ -8,8 +8,8 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import Swal from "sweetalert2";
 
-const Usuggestions = () => {
-  const [suggestion, setSuggestion] = useState([]);
+const Usuggestions = ({setEditPop,setSelectedSuggestion,suggestion,setSuggestion}) => {
+  
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState("All");
   useEffect(() => {
@@ -92,7 +92,10 @@ const Usuggestions = () => {
                 {options === "own" && (
                   <div className="sugg-actionbtns">
                     {item?.status && (
-                      <button className="sEdit">
+                      <button className="sEdit" onClick={()=>{
+                        setSelectedSuggestion(item)
+                        setEditPop('suggestion')
+                      }}>
                         <EditIcon />
                       </button>
                     )}

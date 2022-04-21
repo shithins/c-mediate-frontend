@@ -11,8 +11,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import Swal from 'sweetalert2'
 import { deleteFile } from "../../../constant/functions";
 
-const Ucomplaints = () => {
-  const [complaints, setComplaints] = useState([]);
+const Ucomplaints = ({setEditPop,setSelectedComplaint,complaints,setComplaints}) => {
+  
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState("All");
   useEffect(() => {
@@ -153,7 +153,10 @@ const Ucomplaints = () => {
                 </div>
                 :
                 <div className="report-btn"  style={{    display: 'flex' ,marginLeft: '472px'}}>
-                  <EditIcon onClick={()=> alert('koii')} />
+                  <EditIcon onClick={()=> {
+                    setSelectedComplaint(item)
+                    setEditPop('complaint')
+                  }} />
                 
                   <DeleteForeverIcon onClick={()=> deleteHandler(item._id,item.image ?item.image:null)}/>
                 </div>

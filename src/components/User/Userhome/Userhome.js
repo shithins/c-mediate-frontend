@@ -6,17 +6,43 @@ import Usuggestions from "../Usersuggestions/Usugg";
 import Uannouncements from "../Userannouncements/Uannouncements";
 import Addcomplaint from "../UserAddcomplaints/Addcomplaint";
 import Addsuggestions from "../UserAddsuggestions/Addsuggestions";
-const Userhome = ( {setAddpopup , showAddpopup}) => {
+import Editsuggestion from "../Editsuggestion/Editsuggestion";
+import Editcomplaint from "../Editcomplaint/Editcomplaint";
+
+const Userhome = ({ setAddpopup, showAddpopup }) => {
   const history = useHistory();
   const [showPopup, setPopup] = useState("svg");
+  const [editPop, setEditPop] = useState("close");
+  const [selectedSuggestion, setSelectedSuggestion] = useState({});
+  const [selectedComplaint, setSelectedComplaint] = useState({});
+  const [suggestion, setSuggestion] = useState([]);
+  const [complaints, setComplaints] = useState([]);
   return (
     <div className="userHome-main">
-    {showAddpopup === "complaint" &&
-    <Addcomplaint setAddpopup={setAddpopup}/>
-    }
-    {showAddpopup === "suggestion" &&
-    <Addsuggestions setAddpopup={setAddpopup}/>
-    }
+      {showAddpopup === "complaint" && (
+        <Addcomplaint setAddpopup={setAddpopup} />
+      )}
+      {showAddpopup === "suggestion" && (
+        <Addsuggestions setAddpopup={setAddpopup} />
+      )}
+      {editPop === "suggestion" && (
+        <Editsuggestion
+          setEditPop={setEditPop}
+          setSelectedSuggestion={setSelectedSuggestion}
+          selectedSuggestion={selectedSuggestion}
+          suggestion={suggestion}
+          setSuggestion={setSuggestion}
+        />
+      )}
+      {editPop == "complaint" && (
+        <Editcomplaint
+          selectedComplaint={selectedComplaint}
+          setSelectedComplaint={setSelectedComplaint}
+          setComplaints={setComplaints}
+            complaints={complaints}
+            setEditPop={setEditPop}
+        />
+      )}
       <div className="home-btns">
         <button
           onClick={() => setPopup("complaint")}
@@ -33,18 +59,30 @@ const Userhome = ( {setAddpopup , showAddpopup}) => {
         </button>
 
         <button
-        onClick={() => setPopup("announcements")}
+          onClick={() => setPopup("announcements")}
           style={{ background: showPopup === "announcements" && "darkcyan" }}
-          >
+        >
           Announcements
-          </button>
-
+        </button>
       </div>
       <div className="home-popups">
-        {showPopup === "complaint" && <Ucomplaints />}
-        {showPopup === "suggestions" && <Usuggestions />}
+        {showPopup === "complaint" && (
+          <Ucomplaints
+            setSelectedComplaint={setSelectedComplaint}
+            setEditPop={setEditPop}
+            setComplaints={setComplaints}
+            complaints={complaints}
+          />
+        )}
+        {showPopup === "suggestions" && (
+          <Usuggestions
+            setSelectedSuggestion={setSelectedSuggestion}
+            setEditPop={setEditPop}
+            suggestion={suggestion}
+            setSuggestion={setSuggestion}
+          />
+        )}
         {showPopup === "announcements" && <Uannouncements />}
-        
       </div>
     </div>
   );
