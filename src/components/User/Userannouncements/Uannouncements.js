@@ -46,9 +46,15 @@ const Uannouncements = () => {
             return (
               <div className="ann-box">
                 <h2>{item.title}</h2>
-                <h4>{new Date(item.dueDate).toLocaleDateString() }</h4>
+                <h4>{new Date(item.dueDate).toLocaleDateString()}</h4>
                 <p>{item.message}</p>
-                <button>Get Details</button>
+                {item.pdf && (
+                  <button
+                    onClick={() => (window.location.href = `${item.pdf.url}`)}
+                  >
+                    Get Details
+                  </button>
+                )}
               </div>
             );
           })}

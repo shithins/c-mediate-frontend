@@ -9,6 +9,7 @@ import Addsuggestions from "../UserAddsuggestions/Addsuggestions";
 import Editsuggestion from "../Editsuggestion/Editsuggestion";
 import Editcomplaint from "../Editcomplaint/Editcomplaint";
 
+
 const Userhome = ({ setAddpopup, showAddpopup }) => {
   const history = useHistory();
   const [showPopup, setPopup] = useState("svg");
@@ -84,6 +85,7 @@ const Userhome = ({ setAddpopup, showAddpopup }) => {
         )}
         {showPopup === "announcements" && <Uannouncements />}
       </div>
+      
     </div>
   );
 };

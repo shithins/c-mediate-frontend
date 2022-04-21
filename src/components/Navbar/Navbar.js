@@ -46,13 +46,13 @@ function Navbar({ setAddpopup }) {
   }, [window.location]);
 
   return (
-    <div className="nav-main">
+    <div className="nav-main" >
       <p>C-MEDIATE</p>
       {user?.user && (
         <img src={avatar} onClick={() => setProopt(!showProopt)} />
       )}
       {showProopt && (
-        <div className="pro-menu">
+        <div className="pro-menu" onMouseLeave={()=>setProopt(false)}>
           {user?.user?.role === 3 && (
             <>
               <p onClick={() => setAddpopup("complaint")}>Add Complaint</p>

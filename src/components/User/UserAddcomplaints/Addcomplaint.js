@@ -70,7 +70,7 @@ const Addcomplaint = ({ setAddpopup }) => {
           "POST"
         )}
       </button>
-      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+      <input type="file" accept="image/*"  onChange={(e) => setFile(e.target.files[0])} />
     </div>
   );
 };
