@@ -62,7 +62,7 @@ const Addcomplaint = ({ setAddpopup }) => {
         {loading ? (
           <Box sx={{ width: "100%" }}>
             {progress < 100 && progress !== 0
-              ? `uploading file ${progress}%`
+              ? `uploading file ${Math.round(progress)}%`
               : "posting complaint"}
             <LinearProgress />
           </Box>

@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import Swal from 'sweetalert2'
+import { deleteFile } from "../../../constant/functions";
 
 const Ucomplaints = () => {
   const [complaints, setComplaints] = useState([]);
@@ -73,7 +74,7 @@ const Ucomplaints = () => {
     })
   }
 
-  const deleteHandler=_id=>{
+  const deleteHandler=(_id,image)=>{
     Swal.fire({
       title: 'Are you sure?',
       icon: 'warning',
@@ -85,6 +86,9 @@ const Ucomplaints = () => {
       if(result.isConfirmed){
         Axios.post('/complaint/delete',{_id}).then(({data})=>{
           if(data.status){
+            if(image){
+              deleteFile(image.id,"complaints")
+            }
             successToast("Deleted")
             setComplaints(complaints.filter(i=> i._id !== _id))
           }else Swal.fire('Failed!', data.message || 'something wrong', 'error')
@@ -151,7 +155,7 @@ const Ucomplaints = () => {
                 <div className="report-btn"  style={{    display: 'flex' ,marginLeft: '472px'}}>
                   <EditIcon onClick={()=> alert('koii')} />
                 
-                  <DeleteForeverIcon onClick={()=> deleteHandler(item._id)}/>
+                  <DeleteForeverIcon onClick={()=> deleteHandler(item._id,item.image ?item.image:null)}/>
                 </div>
                 }
                 {

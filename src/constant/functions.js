@@ -1,6 +1,6 @@
 import { storage } from "./firebaseConfig";
 import { v4 as uuid } from "uuid";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL,deleteObject } from "firebase/storage";
 
 export function uploadFile(file, type, setProgress) {
   return new Promise(async (resolve, reject) => {
@@ -37,4 +37,10 @@ export function uploadFile(file, type, setProgress) {
       reject(error);
     }
   });
+}
+
+export function deleteFile(file,type){
+    const desertRef = ref(storage, `${type}/${file}`);
+    deleteObject(desertRef)
+  
 }
