@@ -31,6 +31,10 @@ const Mcomplaints = () => {
           
             </p>
            <img src={samimg} />
+           <div className="replyView-area">
+           <h4>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+           when an unknown printer</h4>
+           </div>
         <div className="status-btns"> 
         <button>Reply</button>
         <button>Solved</button>
