@@ -15,7 +15,7 @@ import { ToastContainer } from "react-toastify";
 function App() {
  
   const [showAddpopup , setAddpopup] = useState("close")
- 
+  const [showManagementpopup, setManagementpopup] = useState ('close')
   
 
   return (
@@ -25,7 +25,7 @@ function App() {
         <div className="eclipse2"></div>
       </div>
      
-      <Navbar setAddpopup={setAddpopup}/>
+      <Navbar setAddpopup={setAddpopup} setManagementpopup={setManagementpopup}/>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -41,7 +41,7 @@ function App() {
             <Userhome setAddpopup={setAddpopup} showAddpopup={showAddpopup}/>
           </Route>
          <Route path="/management/home">
-            <Managehome />
+            <Managehome setManagementpopup={setManagementpopup} showManagementpopup={showManagementpopup}/>
          </Route>
         </Switch>
       </Router>

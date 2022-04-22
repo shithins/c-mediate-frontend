@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Addcomplaint.css";
 import CloseIcon from "@mui/icons-material/Close";
-
 import { uploadFile } from "../../../constant/functions";
 import { errorToast, infoToast, successToast } from "../../../constant/toast";
 import Axios from "../../../constant/axios";

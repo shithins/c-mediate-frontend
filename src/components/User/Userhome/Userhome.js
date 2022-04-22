@@ -47,21 +47,21 @@ const Userhome = ({ setAddpopup, showAddpopup }) => {
       <div className="home-btns">
         <button
           onClick={() => setPopup("complaint")}
-          style={{ background: showPopup === "complaint" && "darkcyan" }}
+          style={{ background: showPopup === "complaint" && "#6987cb" }}
         >
           Complaints
         </button>
 
         <button
           onClick={() => setPopup("suggestions")}
-          style={{ background: showPopup === "suggestions" && "darkcyan" }}
+          style={{ background: showPopup === "suggestions" && "#6987cb" }}
         >
           Suggestions
         </button>
 
         <button
           onClick={() => setPopup("announcements")}
-          style={{ background: showPopup === "announcements" && "darkcyan" }}
+          style={{ background: showPopup === "announcements" && "#6987cb" }}
         >
           Announcements
         </button>

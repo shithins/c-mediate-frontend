@@ -28,7 +28,8 @@
   position: absolute;
   top: 116px;
   right: 20px;
-  background-color: white;
+  background-color: rgb(32, 63, 65);
+  color: white;
   padding-left: 10px;
   padding-right: 10px;
   height: fit-content;
@@ -39,6 +40,8 @@
   cursor: pointer;
   border-radius: 5px;
   z-index: 999999;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 5px rgb(238, 243, 243);
 }
 
 .pro-menu > p {

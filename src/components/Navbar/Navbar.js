@@ -4,7 +4,7 @@ import avatar from "../../images/avatar.jpeg";
 import { useHistory } from "react-router-dom";
 import decode from "jwt-decode";
 
-function Navbar({ setAddpopup }) {
+function Navbar({ setAddpopup , setManagementpopup }) {
   const history = useHistory();
   const [showProopt, setProopt] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
@@ -46,17 +46,26 @@ function Navbar({ setAddpopup }) {
   }, [window.location]);
 
   return (
-    <div className="nav-main" >
+    <div className="nav-main">
       <p>C-MEDIATE</p>
       {user?.user && (
         <img src={avatar} onClick={() => setProopt(!showProopt)} />
       )}
       {showProopt && (
-        <div className="pro-menu" onMouseLeave={()=>setProopt(false)}>
+        <div className="pro-menu" onMouseLeave={() => setProopt(false)}>
           {user?.user?.role === 3 && (
             <>
               <p onClick={() => setAddpopup("complaint")}>Add Complaint</p>
               <p onClick={() => setAddpopup("suggestion")}>Add Suggestion</p>
+            </>
+          )}
+
+          {user?.user?.role === 2 && (
+            <>
+              <p onClick={() => setManagementpopup("student")}>Add Student</p>
+              <p onClick={() => setManagementpopup("announcement")}>Add Announcement</p>
+              <p onClick={() => setManagementpopup("profile")}>Edit profile</p>
+              <p onClick={() => setManagementpopup("blocked")}>Blocked Profiles</p>
             </>
           )}
           <p onClick={logOut}>Logout</p>
