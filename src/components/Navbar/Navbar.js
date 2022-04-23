@@ -65,7 +65,7 @@ function Navbar({ setAddpopup , setManagementpopup }) {
               <p onClick={() => setManagementpopup("student")}>Add Student</p>
               <p onClick={() => setManagementpopup("announcement")}>Add Announcement</p>
               <p onClick={() => setManagementpopup("profile")}>Edit profile</p>
-              <p onClick={() => setManagementpopup("blocked")}>Blocked Profiles</p>
+              <p onClick={() => setManagementpopup("blocked")}>Students</p>
             </>
           )}
           <p onClick={logOut}>Logout</p>

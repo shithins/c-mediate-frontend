@@ -10,9 +10,10 @@ import Paper from "@mui/material/Paper";
 
 import "./Blockedprofile.css";
 import CloseIcon from "@mui/icons-material/Close";
-import { errorToast, infoToast } from "../../../constant/toast";
+import { errorToast, infoToast, successToast } from "../../../constant/toast";
 import LinearProgress from "@mui/material/LinearProgress";
 import Axios from "../../../constant/axios";
+import Swal from "sweetalert2";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -42,7 +43,7 @@ const Blockedprofile = ({ setManagementpopup }) => {
   const [loading, setLoading] = React.useState(false);
   React.useEffect(() => {
     setLoading(true);
-
+    setProfiles([])
     Axios.get(`/user/get/${options}`)
       .then(({ data }) => {
         setLoading(false);
@@ -76,6 +77,7 @@ const Blockedprofile = ({ setManagementpopup }) => {
         options={options}
         profiles={profiles}
         loading={loading}
+        setProfiles={setProfiles}
       />
     </div>
   );
@@ -83,7 +85,26 @@ const Blockedprofile = ({ setManagementpopup }) => {
 
 export default Blockedprofile;
 
-function CustomizedTables({ options, profiles, loading }) {
+function CustomizedTables({ options, profiles, loading ,setProfiles}) {
+  const unBlockHandler=_id=>{
+    Swal.fire({
+      title: "Are you sure?",
+
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Unblock",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Axios.post('/user/unblock',{_id}).then(({data})=>{
+          if(data.status){
+            successToast('unBlocked ')
+            setProfiles(profiles.filter(i=>i._id !== _id))
+          }else infoToast(data.message||'failed to unblock')
+        }).catch(e=>errorToast(e.message||"network error"))
+      }})
+  }
   return (
     <TableContainer component={Paper}>
       <Table
@@ -145,9 +166,9 @@ function CustomizedTables({ options, profiles, loading }) {
                 </StyledTableCell>
                 <StyledTableCell align="right">{pro.mobile}</StyledTableCell>
                 <StyledTableCell align="right">{pro.block}</StyledTableCell>
-                <StyledTableCell align="right">{"block date"}</StyledTableCell>
+                <StyledTableCell align="right">{new Date(pro.blockedDate).toLocaleDateString()}</StyledTableCell>
                 <StyledTableCell align="right">
-                  <button className="Munblock-btn">Unblock</button>
+                  <button className="Munblock-btn" onClick={()=>unBlockHandler(pro._id)}>Unblock</button>
                 </StyledTableCell>
               </StyledTableRow>
             ))}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Addcomplaint.css";
 import CloseIcon from "@mui/icons-material/Close";
-import { uploadFile } from "../../../constant/functions";
+import { deleteFile, uploadFile } from "../../../constant/functions";
 import { errorToast, infoToast, successToast } from "../../../constant/toast";
 import Axios from "../../../constant/axios";
 import Box from "@mui/material/Box";
@@ -19,16 +19,20 @@ const Addcomplaint = ({ setAddpopup }) => {
     };
   }, []);
 
-  const uploadData = (data) => {
+  const uploadData = (data, id) => {
     Axios.post("/complaint/add", data)
       .then(({ data }) => {
         setLoading(false);
         if (data.status) {
           successToast("complaint posted");
           setAddpopup("close");
-        } else infoToast(data.message || "something wrong");
+        } else {
+          deleteFile(id, "complaints");
+          infoToast(data.message || "something wrong");
+        }
       })
       .catch((e) => {
+        deleteFile(id, "complaints");
         setLoading(false);
         errorToast("something wrong");
       });
@@ -39,7 +43,9 @@ const Addcomplaint = ({ setAddpopup }) => {
     setLoading(true);
     if (file) {
       uploadFile(file, "complaints", setProgress)
-        .then((r) => uploadData({ message, image: { id: r.id, url: r.url } }))
+        .then((r) =>
+          uploadData({ message, image: { id: r.id, url: r.url } }, r.id)
+        )
         .catch((e) => {
           setLoading(false);
           return errorToast("Failed to post complaint ");
@@ -69,7 +75,11 @@ const Addcomplaint = ({ setAddpopup }) => {
           "POST"
         )}
       </button>
-      <input type="file" accept="image/*"  onChange={(e) => setFile(e.target.files[0])} />
+      <input
+        type="file"
+        accept="image/*"
+        onChange={(e) => setFile(e.target.files[0])}
+      />
     </div>
   );
 };
