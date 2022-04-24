@@ -7,7 +7,7 @@ import Mannouncement from "../Announcement/Announcement";
 import Addannouncement from "../Addannouncement/Addannouncement";
 import Addstudent from "../Addstudent/Addstudent";
 import Editprofile from "../Editprofile/Editprofile";
-import Blockedprofile from "../Blockedprofiles/Blockedprofile";
+import Students from "../Students/Students";
 import Gif from "../../Gif/Gif";
 const Managehome = ( { setManagementpopup , showManagementpopup}) => {
   const history = useHistory();
@@ -27,7 +27,7 @@ const Managehome = ( { setManagementpopup , showManagementpopup}) => {
       )}
 
       {showManagementpopup === "blocked" && (
-        <Blockedprofile setManagementpopup={setManagementpopup} />
+        <Students setManagementpopup={setManagementpopup} />
       )}
 
 
