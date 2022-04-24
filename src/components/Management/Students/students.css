@@ -49,3 +49,16 @@
     justify-content: space-between;
     margin: 10px;
 }
+.Mpass-btn{
+    border: none;
+    border-radius: 20px;
+    padding: 12px;
+    background: darkgrey;
+}
+.MdeleteAll-btn{
+    height: 34px;
+    color: white;
+    background: red;
+    font-size: 1.3rem;
+    border: none;
+}

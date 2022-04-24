@@ -8,7 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import "./Blockedprofile.css";
+import "./students.css";
 import CloseIcon from "@mui/icons-material/Close";
 import { errorToast, infoToast, successToast } from "../../../constant/toast";
 import LinearProgress from "@mui/material/LinearProgress";
@@ -36,7 +36,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const Blockedprofile = ({ setManagementpopup }) => {
+const Students = ({ setManagementpopup }) => {
 
   const [options, setOptions] = React.useState("All");
   const [profiles, setProfiles] = React.useState([]);
@@ -66,6 +66,7 @@ const Blockedprofile = ({ setManagementpopup }) => {
         >
           {options}
         </button>
+        <button onClick={() => setOptions(options === "Old" ? "All" : "Old")}  className="Mpass-btn">Pass out</button>
         <button
           className="Mclose-btn"
           onClick={() => setManagementpopup("close")}
@@ -83,7 +84,7 @@ const Blockedprofile = ({ setManagementpopup }) => {
   );
 };
 
-export default Blockedprofile;
+export default Students;
 
 function CustomizedTables({ options, profiles, loading ,setProfiles}) {
   const unBlockHandler=_id=>{
@@ -131,6 +132,16 @@ function CustomizedTables({ options, profiles, loading ,setProfiles}) {
               <StyledTableCell align="right">Options</StyledTableCell>
             </TableRow>
           )}
+          {options === "Old" && (
+            <TableRow>
+              <StyledTableCell>Name</StyledTableCell>
+              <StyledTableCell align="right">Mobile</StyledTableCell>
+              <StyledTableCell align="right">Status</StyledTableCell>
+              <StyledTableCell align="right">Added Date</StyledTableCell>
+
+              <StyledTableCell align="right"><button className="MdeleteAll-btn">Delete all</button></StyledTableCell>
+            </TableRow>
+          )}
         </TableHead>
         <TableBody>
           {loading && (
@@ -170,6 +181,20 @@ function CustomizedTables({ options, profiles, loading ,setProfiles}) {
                 <StyledTableCell align="right">
                   <button className="Munblock-btn" onClick={()=>unBlockHandler(pro._id)}>Unblock</button>
                 </StyledTableCell>
+              </StyledTableRow>
+            ))}
+             {options === "Old" &&
+            profiles.map((pro) => (
+              <StyledTableRow key={pro._id}>
+                <StyledTableCell component="th" scope="row">
+                  {pro.name}
+                </StyledTableCell>
+                <StyledTableCell align="right">{pro.mobile}</StyledTableCell>
+                <StyledTableCell align="right">
+                  {pro.status ? "Registered" : "Not registered"}
+                </StyledTableCell>
+                <StyledTableCell align="right">{new Date(pro.addedDate).toLocaleDateString()}</StyledTableCell>
+                
               </StyledTableRow>
             ))}
         </TableBody>
