@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
+import { deleteFile } from "../../../constant/functions";
 import "./students.css";
 import CloseIcon from "@mui/icons-material/Close";
 import { errorToast, infoToast, successToast } from "../../../constant/toast";
@@ -37,13 +37,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const Students = ({ setManagementpopup }) => {
-
   const [options, setOptions] = React.useState("All");
   const [profiles, setProfiles] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   React.useEffect(() => {
     setLoading(true);
-    setProfiles([])
+    setProfiles([]);
     Axios.get(`/user/get/${options}`)
       .then(({ data }) => {
         setLoading(false);
@@ -66,7 +65,12 @@ const Students = ({ setManagementpopup }) => {
         >
           {options}
         </button>
-        <button onClick={() => setOptions(options === "Old" ? "All" : "Old")}  className="Mpass-btn">Pass out</button>
+        <button
+          onClick={() => setOptions(options === "Old" ? "All" : "Old")}
+          className="Mpass-btn"
+        >
+          Pass out
+        </button>
         <button
           className="Mclose-btn"
           onClick={() => setManagementpopup("close")}
@@ -86,8 +90,8 @@ const Students = ({ setManagementpopup }) => {
 
 export default Students;
 
-function CustomizedTables({ options, profiles, loading ,setProfiles}) {
-  const unBlockHandler=_id=>{
+function CustomizedTables({ options, profiles, loading, setProfiles }) {
+  const unBlockHandler = (_id) => {
     Swal.fire({
       title: "Are you sure?",
 
@@ -98,14 +102,45 @@ function CustomizedTables({ options, profiles, loading ,setProfiles}) {
       confirmButtonText: "Unblock",
     }).then((result) => {
       if (result.isConfirmed) {
-        Axios.post('/user/unblock',{_id}).then(({data})=>{
-          if(data.status){
-            successToast('unBlocked ')
-            setProfiles(profiles.filter(i=>i._id !== _id))
-          }else infoToast(data.message||'failed to unblock')
-        }).catch(e=>errorToast(e.message||"network error"))
-      }})
-  }
+        Axios.post("/user/unblock", { _id })
+          .then(({ data }) => {
+            if (data.status) {
+              successToast("unBlocked ");
+              setProfiles(profiles.filter((i) => i._id !== _id));
+            } else infoToast(data.message || "failed to unblock");
+          })
+          .catch((e) => errorToast(e.message || "network error"));
+      }
+    });
+  };
+
+  const deleteAllHandler = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Delete all",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        infoToast("It may take too long");
+        infoToast("Deleting users");
+        Axios.post("/user/delete/allOld", { profile: profiles })
+          .then(({ data }) => {
+            if (data.status) {
+              infoToast("Deleting files");
+              for (let i in data.Ids) {
+                deleteFile(data.Ids[i], "complaints");
+              }
+              successToast("Deleted all users");
+            } else infoToast("failed to delete users");
+          })
+          .catch((e) => errorToast(e.message || "network error"));
+      }
+    });
+  };
   return (
     <TableContainer component={Paper}>
       <Table
@@ -139,7 +174,11 @@ function CustomizedTables({ options, profiles, loading ,setProfiles}) {
               <StyledTableCell align="right">Status</StyledTableCell>
               <StyledTableCell align="right">Added Date</StyledTableCell>
 
-              <StyledTableCell align="right"><button className="MdeleteAll-btn">Delete all</button></StyledTableCell>
+              <StyledTableCell align="right">
+                <button className="MdeleteAll-btn" onClick={deleteAllHandler}>
+                  Delete all
+                </button>
+              </StyledTableCell>
             </TableRow>
           )}
         </TableHead>
@@ -165,7 +204,7 @@ function CustomizedTables({ options, profiles, loading ,setProfiles}) {
                   {pro.status ? "Registered" : "Not registered"}
                 </StyledTableCell>
                 <StyledTableCell align="right">
-                  <button>Delete</button>
+                  <button>Edit</button>
                 </StyledTableCell>
               </StyledTableRow>
             ))}
@@ -177,13 +216,20 @@ function CustomizedTables({ options, profiles, loading ,setProfiles}) {
                 </StyledTableCell>
                 <StyledTableCell align="right">{pro.mobile}</StyledTableCell>
                 <StyledTableCell align="right">{pro.block}</StyledTableCell>
-                <StyledTableCell align="right">{new Date(pro.blockedDate).toLocaleDateString()}</StyledTableCell>
                 <StyledTableCell align="right">
-                  <button className="Munblock-btn" onClick={()=>unBlockHandler(pro._id)}>Unblock</button>
+                  {new Date(pro.blockedDate).toLocaleDateString()}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <button
+                    className="Munblock-btn"
+                    onClick={() => unBlockHandler(pro._id)}
+                  >
+                    Unblock
+                  </button>
                 </StyledTableCell>
               </StyledTableRow>
             ))}
-             {options === "Old" &&
+          {options === "Old" &&
             profiles.map((pro) => (
               <StyledTableRow key={pro._id}>
                 <StyledTableCell component="th" scope="row">
@@ -193,8 +239,9 @@ function CustomizedTables({ options, profiles, loading ,setProfiles}) {
                 <StyledTableCell align="right">
                   {pro.status ? "Registered" : "Not registered"}
                 </StyledTableCell>
-                <StyledTableCell align="right">{new Date(pro.addedDate).toLocaleDateString()}</StyledTableCell>
-                
+                <StyledTableCell align="right">
+                  {new Date(pro.addedDate).toLocaleDateString()}
+                </StyledTableCell>
               </StyledTableRow>
             ))}
         </TableBody>
