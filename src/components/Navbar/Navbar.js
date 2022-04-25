@@ -62,10 +62,10 @@ function Navbar({ setAddpopup , setManagementpopup }) {
 
           {user?.user?.role === 2 && (
             <>
-              <p onClick={() => setManagementpopup("student")}>Add Student</p>
+              <p onClick={() => setManagementpopup("student")}>Add User</p>
               <p onClick={() => setManagementpopup("announcement")}>Add Announcement</p>
               <p onClick={() => setManagementpopup("profile")}>Edit profile</p>
-              <p onClick={() => setManagementpopup("blocked")}>Students</p>
+              <p onClick={() => setManagementpopup("blocked")}>Users</p>
             </>
           )}
           <p onClick={logOut}>Logout</p>
