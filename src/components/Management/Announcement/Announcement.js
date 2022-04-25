@@ -8,7 +8,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import Swal from "sweetalert2";
 import { deleteFile } from "../../../constant/functions";
-const Mannouncement = () => {
+const Mannouncement = ({setManagementpopup,setEditAnnouncement}) => {
   const [announcement, setAnnouncement] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -77,7 +77,9 @@ const Mannouncement = () => {
                 Get Details
               </button>
               <div className="moptions">
-                <button>
+                <button onClick={()=> {
+                  setEditAnnouncement(ann)
+                  setManagementpopup("editannouncement")}}>
                   <EditIcon />
                   Edit
                 </button>

@@ -1,0 +1,110 @@
+.add-ann-main{
+    position: absolute;
+    height: 70%;
+    width: 50%;
+    background-color: rgb(145 129 208);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    border-radius: 85px;
+    box-shadow: 0px 13px 102px 19px #172636;
+}
+
+.add-ann-main>h2{
+    font-size: 2.2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 67px;
+    font-family: cursive;
+}
+
+.add-ann-main>input:nth-child(3){
+    position: absolute;
+    top: 24%;
+    left: 50%;
+    transform: translate(-50%, -57%);
+    height: 45px;
+    width: 500px;
+    border-radius: 29px;
+    background-color: #c0e1ed;
+    font-size: 1.5rem;
+    font-family: cursive;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+.add-ann-main>input:nth-child(4){
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -57%);
+    height: 45px;
+    width: 500px;
+    border-radius: 29px;
+    background-color: #c0e1ed;
+    font-size: 1.5rem;
+    font-family: cursive;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+.add-ann-main>input:nth-child(5){
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -57%);
+    height: 150px;
+    width: 500px;
+    border-radius: 29px;
+    background-color: #c0e1ed;
+    font-size: 1.5rem;
+    font-family: cursive;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+
+.add-ann-main>input:nth-child(6){
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translate(-50%, -57%);
+    height: 45px;
+    width: 500px;
+    border-radius: 29px;
+    background-color: #c0e1ed;
+    font-size: 1.5rem;
+    font-family: cursive;
+    font-weight: 600;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.add-ann-main>button{
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -57%);
+    height: 45px;
+    width: 250px;
+    border-radius: 29px;
+    background-color: #8bc592;
+    font-size: 1.5rem;
+    font-family: cursive;
+    font-weight: 600;
+    align-items: center;
+    
+}
+
+.man-close{
+    height: fit-content;
+    width: fit-content;
+    background-color: #92959f;
+    position: absolute;
+    right: 55px;
+    top: 36px;
+    transform: scale(1.5);
+    border-radius: 50%;
+}

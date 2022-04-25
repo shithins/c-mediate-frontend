@@ -10,10 +10,12 @@ import Editprofile from "../Editprofile/Editprofile";
 import Students from "../Students/Students";
 import Gif from "../../Gif/Gif";
 import EditStudent from "../EditStudent/EditStudent";
+import EditAnnouncement from "../Editannouncement/EditAnnouncement";
 const Managehome = ({ setManagementpopup, showManagementpopup }) => {
   const history = useHistory();
   const [showPopup, setPopup] = useState("svg");
-  const [editUser,setEditUser] = useState({})
+  const [editUser, setEditUser] = useState({});
+  const[editAnnouncement,setEditAnnouncement]=useState({});
   return (
     <div className="Mhome-main">
       {showManagementpopup === "announcement" && (
@@ -29,12 +31,20 @@ const Managehome = ({ setManagementpopup, showManagementpopup }) => {
       )}
 
       {showManagementpopup === "blocked" && (
-        <Students setManagementpopup={setManagementpopup} setEditUser={setEditUser}/>
+        <Students
+          setManagementpopup={setManagementpopup}
+          setEditUser={setEditUser}
+        />
       )}
       {showManagementpopup === "edituser" && (
-        <EditStudent editUser={editUser} setManagementpopup={setManagementpopup} />
+        <EditStudent
+          editUser={editUser}
+          setManagementpopup={setManagementpopup}
+        />
       )}
-
+      {showManagementpopup === "editannouncement" && (
+        <EditAnnouncement editAnnouncement={editAnnouncement}  setManagementpopup={setManagementpopup} />
+      )}
       <div className="mhome-btns">
         <button
           onClick={() => setPopup("complaint")}
@@ -60,7 +70,9 @@ const Managehome = ({ setManagementpopup, showManagementpopup }) => {
       <div className="mhome-popups">
         {showPopup === "complaint" && <Mcomplaints />}
         {showPopup === "suggestions" && <Msuggestion />}
-        {showPopup === "announcements" && <Mannouncement />}
+        {showPopup === "announcements" && (
+          <Mannouncement setEditAnnouncement={setEditAnnouncement} setManagementpopup={setManagementpopup} />
+        )}
         {showPopup === "svg" && <Gif />}
       </div>
     </div>
