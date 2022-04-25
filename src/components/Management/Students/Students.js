@@ -69,7 +69,13 @@ const Students = ({ setManagementpopup, setEditUser }) => {
           onClick={() => setOptions(options === "Old" ? "All" : "Old")}
           className="Mpass-btn"
         >
-          Pass out
+          Students
+        </button>
+        <button
+          onClick={() => setOptions(options === "staff" ? "All" : "staff")}
+          className="Mpass-btn"
+        >
+          Staffs
         </button>
         <button
           className="Mclose-btn"
@@ -98,7 +104,7 @@ function CustomizedTables({
   loading,
   setProfiles,
   setManagementpopup,
-  setEditUser
+  setEditUser,
 }) {
   const unBlockHandler = (_id) => {
     Swal.fire({
@@ -123,7 +129,7 @@ function CustomizedTables({
     });
   };
 
-  const deleteAllHandler = () => {
+  const deleteAllHandler = (pro, status) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -131,12 +137,14 @@ function CustomizedTables({
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Delete all",
+      confirmButtonText:status?"Delete Staff": "Delete all",
     }).then((result) => {
       if (result.isConfirmed) {
         infoToast("It may take too long");
         infoToast("Deleting users");
-        Axios.post("/user/delete/allOld", { profile: profiles })
+        Axios.post("/user/delete/allOld", {
+          profile: status ? [pro] : profiles,
+        })
           .then(({ data }) => {
             if (data.status) {
               infoToast("Deleting files");
@@ -150,6 +158,7 @@ function CustomizedTables({
       }
     });
   };
+
   return (
     <TableContainer component={Paper}>
       <Table
@@ -172,7 +181,7 @@ function CustomizedTables({
               <StyledTableCell>Name</StyledTableCell>
               <StyledTableCell align="right">Mobile</StyledTableCell>
               <StyledTableCell align="right">Status</StyledTableCell>
-
+              <StyledTableCell align="right">Role</StyledTableCell>
               <StyledTableCell align="right">Options</StyledTableCell>
             </TableRow>
           )}
@@ -188,6 +197,15 @@ function CustomizedTables({
                   Delete all
                 </button>
               </StyledTableCell>
+            </TableRow>
+          )}
+          {options === "staff" && (
+            <TableRow>
+              <StyledTableCell>Name</StyledTableCell>
+              <StyledTableCell align="right">Mobile</StyledTableCell>
+              <StyledTableCell align="right">Status</StyledTableCell>
+              <StyledTableCell align="right">Added Date</StyledTableCell>
+              <StyledTableCell align="right">Options</StyledTableCell>
             </TableRow>
           )}
         </TableHead>
@@ -212,13 +230,14 @@ function CustomizedTables({
                 <StyledTableCell align="right">
                   {pro.status ? "Registered" : "Not registered"}
                 </StyledTableCell>
+                <StyledTableCell align="right">{pro.role}</StyledTableCell>
                 <StyledTableCell align="right">
-                  <button onClick={() =>{
-                    setEditUser(pro)
-                    setManagementpopup("edituser")
-                  }
-                }>
-                    
+                  <button
+                    onClick={() => {
+                      setEditUser(pro);
+                      setManagementpopup("edituser");
+                    }}
+                  >
                     Edit
                   </button>
                 </StyledTableCell>
@@ -257,6 +276,29 @@ function CustomizedTables({
                 </StyledTableCell>
                 <StyledTableCell align="right">
                   {new Date(pro.addedDate).toLocaleDateString()}
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
+          {options === "staff" &&
+            profiles.map((pro) => (
+              <StyledTableRow key={pro._id}>
+                <StyledTableCell component="th" scope="row">
+                  {pro.name}
+                </StyledTableCell>
+                <StyledTableCell align="right">{pro.mobile}</StyledTableCell>
+                <StyledTableCell align="right">
+                  {pro.status ? "Registered" : "Not registered"}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  {new Date(pro.addedDate).toLocaleDateString()}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <button
+                    className="MdeleteAll-btn"
+                    onClick={() => deleteAllHandler(pro, true)}
+                  >
+                    Delete
+                  </button>
                 </StyledTableCell>
               </StyledTableRow>
             ))}

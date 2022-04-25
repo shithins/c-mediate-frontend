@@ -33,7 +33,7 @@ const Addstudent = ({setManagementpopup}) => {
         <div className="add-student-main">
         <div className="man-student-close" onClick={() => setManagementpopup("close")}>
         <CloseIcon /> </div>
-        <h2>Add student </h2>
+        <h2>Add user </h2>
         <input type="text" value={name} onChange={(e)=>setName(e.target.value)} placeholder="Student Name" />
         <input type="number" value={mobile} placeholder="Phone Number" onChange={(e)=>setMobile(e.target.value)} />
         <button onClick={addHandler}>{loading ? (

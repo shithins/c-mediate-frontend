@@ -11,12 +11,12 @@ const EditAnnouncement = ({ setManagementpopup, editAnnouncement }) => {
   const [title, setTitle] = useState(editAnnouncement?.title);
   const [message, setMessage] = useState(editAnnouncement?.message);
   const [dueDate, setDueDate] = useState(editAnnouncement?.dueDate);
-  const [file, setFile] = useState({});
+  const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const sumbitHandler = () => {
-    if (!title || !message || !dueDate || !file)
+    if (!title || !message || !dueDate)
       return infoToast("All fields are required");
     if (
       (new Date(dueDate).getTime() - new Date().getTime()) /
@@ -25,34 +25,61 @@ const EditAnnouncement = ({ setManagementpopup, editAnnouncement }) => {
     )
       return infoToast("Select upcomming date");
     setLoading(true);
-    uploadFile(file, "Announcements", setProgress)
-      .then((r) => {
-        Axios.post("/announcement/add", {
-          message,
-          dueDate,
-          title,
-          pdf: { id: r.id, url: r.url },
-        })
-          .then(({ data }) => {
-            setLoading(false);
-            if (data.status) {
-              successToast("Added announcement");
-              setManagementpopup("close");
-            } else {
-              deleteFile(r.id, "Announcements");
-              infoToast(data.message || "failed to post ");
-            }
+    if (file) {
+      
+      uploadFile(file, "Announcements", setProgress)
+        .then((r) => {
+          Axios.post("/announcement/edit", {
+            _id: editAnnouncement?._id,
+            message,
+            dueDate,
+            title,
+            pdf: { id: r.id, url: r.url },
           })
-          .catch((e) => {
-            deleteFile(r.id, "Announcements");
-            setLoading(false);
-            errorToast(e.message || "network error");
-          });
+            .then(({ data }) => {
+              setLoading(false);
+              if (data.status) {
+                successToast("Added announcement");
+                setManagementpopup("close");
+                infoToast('Reload required')
+                deleteFile(editAnnouncement?.pdf?.id, "Announcements");
+              } else {
+                deleteFile(r.id, "Announcements");
+                infoToast(data.message || "failed to post ");
+              }
+            })
+            .catch((e) => {
+              deleteFile(r.id, "Announcements");
+              setLoading(false);
+              errorToast(e.message || "network error");
+            });
+        })
+        .catch((e) => {
+          setLoading(false);
+          errorToast("something wrong please try again");
+        });
+    } else {
+      Axios.post("/announcement/edit", {
+        _id: editAnnouncement?._id,
+        message,
+        dueDate,
+        title,
       })
-      .catch((e) => {
-        setLoading(false);
-        errorToast("something wrong please try again");
-      });
+        .then(({ data }) => {
+          setLoading(false);
+          if (data.status) {
+            successToast("Added announcement");
+            infoToast('Reload required')
+            setManagementpopup("close");
+          } else {
+            infoToast(data.message || "failed to post ");
+          }
+        })
+        .catch((e) => {
+          setLoading(false);
+          errorToast(e.message || "network error");
+        });
+    }
   };
 
   return (
