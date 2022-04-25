@@ -9,27 +9,31 @@ import Addstudent from "../Addstudent/Addstudent";
 import Editprofile from "../Editprofile/Editprofile";
 import Students from "../Students/Students";
 import Gif from "../../Gif/Gif";
-const Managehome = ( { setManagementpopup , showManagementpopup}) => {
+import EditStudent from "../EditStudent/EditStudent";
+const Managehome = ({ setManagementpopup, showManagementpopup }) => {
   const history = useHistory();
   const [showPopup, setPopup] = useState("svg");
+  const [editUser,setEditUser] = useState({})
   return (
     <div className="Mhome-main">
-    {showManagementpopup === "announcement" && (
+      {showManagementpopup === "announcement" && (
         <Addannouncement setManagementpopup={setManagementpopup} />
-      )}  
-      
+      )}
+
       {showManagementpopup === "student" && (
         <Addstudent setManagementpopup={setManagementpopup} />
       )}
-      
+
       {showManagementpopup === "profile" && (
         <Editprofile setManagementpopup={setManagementpopup} />
       )}
 
       {showManagementpopup === "blocked" && (
-        <Students setManagementpopup={setManagementpopup} />
+        <Students setManagementpopup={setManagementpopup} setEditUser={setEditUser}/>
       )}
-
+      {showManagementpopup === "edituser" && (
+        <EditStudent editUser={editUser} setManagementpopup={setManagementpopup} />
+      )}
 
       <div className="mhome-btns">
         <button
@@ -47,20 +51,18 @@ const Managehome = ( { setManagementpopup , showManagementpopup}) => {
         </button>
 
         <button
-        onClick={() => setPopup("announcements")}
+          onClick={() => setPopup("announcements")}
           style={{ background: showPopup === "announcements" && "#6987cb" }}
-          >
+        >
           Announcements
-          </button>
-
+        </button>
       </div>
-     <div className="mhome-popups">
-         {showPopup === "complaint" && <Mcomplaints />}
-         {showPopup === "suggestions" && <Msuggestion />}
-         {showPopup === "announcements" && <Mannouncement />}
-         {showPopup === "svg" && <Gif/> }  
-        
-  </div> 
+      <div className="mhome-popups">
+        {showPopup === "complaint" && <Mcomplaints />}
+        {showPopup === "suggestions" && <Msuggestion />}
+        {showPopup === "announcements" && <Mannouncement />}
+        {showPopup === "svg" && <Gif />}
+      </div>
     </div>
   );
 };

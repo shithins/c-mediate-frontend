@@ -36,7 +36,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const Students = ({ setManagementpopup }) => {
+const Students = ({ setManagementpopup, setEditUser }) => {
   const [options, setOptions] = React.useState("All");
   const [profiles, setProfiles] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
@@ -83,6 +83,8 @@ const Students = ({ setManagementpopup }) => {
         profiles={profiles}
         loading={loading}
         setProfiles={setProfiles}
+        setManagementpopup={setManagementpopup}
+        setEditUser={setEditUser}
       />
     </div>
   );
@@ -90,7 +92,14 @@ const Students = ({ setManagementpopup }) => {
 
 export default Students;
 
-function CustomizedTables({ options, profiles, loading, setProfiles }) {
+function CustomizedTables({
+  options,
+  profiles,
+  loading,
+  setProfiles,
+  setManagementpopup,
+  setEditUser
+}) {
   const unBlockHandler = (_id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -204,7 +213,14 @@ function CustomizedTables({ options, profiles, loading, setProfiles }) {
                   {pro.status ? "Registered" : "Not registered"}
                 </StyledTableCell>
                 <StyledTableCell align="right">
-                  <button>Edit</button>
+                  <button onClick={() =>{
+                    setEditUser(pro)
+                    setManagementpopup("edituser")
+                  }
+                }>
+                    
+                    Edit
+                  </button>
                 </StyledTableCell>
               </StyledTableRow>
             ))}
