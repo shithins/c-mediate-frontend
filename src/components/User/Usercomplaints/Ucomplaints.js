@@ -155,6 +155,7 @@ const Ucomplaints = ({
           complaints.map((item) => {
             return (
               <div className="com-box" key={item._id}>
+              <span className="com-box-date">{new Date(item.date).toLocaleDateString()}</span>
                 <p>{item.message}</p>
                 {item.image && (
                   <img

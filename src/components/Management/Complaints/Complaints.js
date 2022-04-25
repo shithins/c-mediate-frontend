@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Complaints.css";
-
+import ImageViewer from "react-simple-image-viewer";
 import Axios from "../../../constant/axios";
 import { errorToast, infoToast, successToast } from "../../../constant/toast";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -11,7 +11,7 @@ const Mcomplaints = () => {
   const [options, setOptions] = useState("All");
   const [loading, setLoading] = useState(false);
   const [complaints, setComplaints] = useState([]);
-
+  const [isViewerOpen, setIsViewerOpen] = useState("");
   useEffect(() => {
     if (options === "All") {
       setComplaints([]);
@@ -72,7 +72,7 @@ const Mcomplaints = () => {
               successToast("Reply posted");
             } else infoToast(data.message || "failed to post reply");
           })
-          .catch((e) => errorToast(e.message||"something went wrong.."));
+          .catch((e) => errorToast(e.message || "something went wrong.."));
       },
       allowOutsideClick: () => !Swal.isLoading(),
     });
@@ -103,12 +103,13 @@ const Mcomplaints = () => {
               successToast("Complaint Solved");
             } else infoToast(data.message || "something wrong");
           })
-          .catch((e) => errorToast(e.message||"Please check your network"));
+          .catch((e) => errorToast(e.message || "Please check your network"));
       }
     });
   };
 
-  const blockHandler = (_id) => {
+  const blockHandler = (_id, status) => {
+    if (status) return infoToast("Wait for the admin responce");
     Swal.fire({
       title: "Are you sure?",
 
@@ -126,11 +127,11 @@ const Mcomplaints = () => {
               successToast("Block requested");
             } else infoToast(data.message || "failed to request");
           })
-          .catch((e) => errorToast(e.message||"Please check your internet"));
+          .catch((e) => errorToast(e.message || "Please check your internet"));
       }
     });
   };
-  const unBlockHandler =_id =>{
+  const unBlockHandler = (_id) => {
     Swal.fire({
       title: "Are you sure?",
 
@@ -141,15 +142,17 @@ const Mcomplaints = () => {
       confirmButtonText: "Unblock",
     }).then((result) => {
       if (result.isConfirmed) {
-        Axios.post('/complaint/unblock',{_id}).then(({data})=>{
-          if(data.status){
-            setComplaints(complaints.filter((i) => i._id !== _id));
-            successToast('Unblocked')
-          }else infoToast(data.message||'failed to unblock')
-        }).catch(e=> errorToast(e.message||'Please check your internet'))
+        Axios.post("/complaint/unblock", { _id })
+          .then(({ data }) => {
+            if (data.status) {
+              setComplaints(complaints.filter((i) => i._id !== _id));
+              successToast("Unblocked");
+            } else infoToast(data.message || "failed to unblock");
+          })
+          .catch((e) => errorToast(e.message || "Please check your internet"));
       }
-    })
-  }
+    });
+  };
   return (
     <div className="mcom-box-main">
       <div className="mcom-btns">
@@ -189,10 +192,13 @@ const Mcomplaints = () => {
           complaints.map((com) => {
             return (
               <div className="mcom-box" key={com._id}>
+                <span style={{ fontSize: "1.2rem" }}>
+                  {new Date(com.date).toLocaleDateString()}
+                </span>
                 <p>{com.message}</p>
                 {com.image && (
-                  <img src={com.image.url} alt="image not supported" />
-                )}
+                  <img src={com.image.url} alt="image not supported" onClick={() => setIsViewerOpen(com.image.url)} />
+                )} 
                 {com.reply && (
                   <div className="replyView-area">
                     <h4>{com.reply}</h4>
@@ -218,8 +224,17 @@ const Mcomplaints = () => {
                       >
                         {com.status === "solved" ? "Solved" : "Solve"}
                       </button>
-                      <button onClick={() => blockHandler(com._id)}>
-                        Block request
+                      <button
+                        onClick={() =>
+                          blockHandler(
+                            com._id,
+                            com.status === "requested" ? true : false
+                          )
+                        }
+                      >
+                        {com.status === "requested"
+                          ? "Requested"
+                          : "Block request"}
                       </button>
                     </>
                   )}
@@ -233,6 +248,18 @@ const Mcomplaints = () => {
             );
           })}
       </div>
+      {isViewerOpen && (
+        <ImageViewer
+          src={[`${isViewerOpen}`]}
+          currentIndex={0}
+          onClose={() => setIsViewerOpen("")}
+          disableScroll={true}
+          backgroundStyle={{
+            backgroundColor: "rgba(0,0,0,0.9)",
+          }}
+          closeOnClickOutside={true}
+        />
+      )}
     </div>
   );
 };
