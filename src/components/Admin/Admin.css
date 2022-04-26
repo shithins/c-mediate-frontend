@@ -93,10 +93,10 @@
   font-weight: 500;
 }
 
-.admin-content>button:nth-child(6){
+.adminpopClose-btn{
     position: absolute;
     bottom: 15%;
-    left: 71%;
+    left: 79%;
     height: 44px;
     width: -moz-fit-content;
     width: fit-content;
@@ -136,8 +136,23 @@
 .report-count>h3{
     font-size: 1.4rem;
 }
-
-.admin-content>button:nth-child(5){
+.adminpopReject-btn{
+  position: absolute;
+  bottom: 15%;
+  left: 71%;
+  height: 44px;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 130px;
+  border-radius: 15px;
+  mix-blend-mode: initial;
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: sans-serif;
+  color: #060606;
+  background-color: #2dcbbe;   
+}
+.adminpopBlock-btn{
     position: absolute;
     bottom: 15%;
     left: 63%;

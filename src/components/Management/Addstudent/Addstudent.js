@@ -12,11 +12,12 @@ const Addstudent = ({setManagementpopup}) => {
     const [name,setName]=useState('')
     const [mobile,setMobile]=useState('')
     const [loading,setLoading]=useState(false)
-
+    const [role,setRole]=useState('student')
     const addHandler=()=>{
-        if(!name || !mobile) return infoToast('Missing data')
+     
+        if(!name || !mobile ||!role) return infoToast('Missing data')
         setLoading(true)
-        Axios.post('/user/add',{name,mobile}).then(({data})=>{
+        Axios.post('/user/add',{name,mobile,role}).then(({data})=>{
             setLoading(false)
             if(data.status){
                 successToast('Student added')
@@ -37,7 +38,7 @@ const Addstudent = ({setManagementpopup}) => {
         <input type="text" value={name} onChange={(e)=>setName(e.target.value)} placeholder="Student Name" />
         <input type="number" value={mobile} placeholder="Phone Number" onChange={(e)=>setMobile(e.target.value)} />
         
-        <select >
+        <select onChange={(e)=>setRole(e.target.value)} >
         <option value="student">Student</option>
         <option value="staff">Staff</option>
         </select>
