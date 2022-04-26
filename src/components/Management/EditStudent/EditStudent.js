@@ -30,9 +30,9 @@ const EditStudent = ({ setManagementpopup, editUser }) => {
       });
   };
   return (
-    <div className="add-student-main">
+    <div className="edit-student-main">
       <div
-        className="man-student-close"
+        className="man-estudent-close"
         onClick={() => setManagementpopup("close")}
       >
         <CloseIcon />{" "}

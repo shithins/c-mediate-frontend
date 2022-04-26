@@ -86,7 +86,7 @@ const Loginpage = () => {
         </div>
         <div className="fpass">
           <h4 onClick={() => history.push("/signup")}>Sign-up</h4>
-          <h3>Forgot password ?</h3>
+          <h3 onClick={ () => history.push("/forgotpassword")}>Forgot password ?</h3>
         </div>
       </div>
 

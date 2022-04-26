@@ -1,4 +1,4 @@
-.add-student-main{
+.edit-student-main{
     position: absolute;
     height: 70%;
     width: 50%;
@@ -11,7 +11,7 @@
     box-shadow: 0px 13px 102px 19px #172636;
 }
 
-.add-student-main>h2{
+.edit-student-main>h2{
     font-size: 2.5rem;
     display: flex;
     flex-direction: row;
@@ -20,7 +20,7 @@
     font-family: cursive;
 }
 
-.add-student-main>input:nth-child(3){
+.edit-student-main>input:nth-child(3){
     position: absolute;
     top: 40%;
     left: 50%;
@@ -35,7 +35,7 @@
     padding-left: 10px;
 }
 
-.add-student-main>input:nth-child(4){
+.edit-student-main>input:nth-child(4){
     position: absolute;
     top: 60%;
     left: 50%;
@@ -50,12 +50,12 @@
     padding-left: 10px;
 }
 
-.add-student-main>input:nth-child(3)::-webkit-scrollbar{
+.edit-student-main>input:nth-child(3)::-webkit-scrollbar{
     display: none;
 }
 
 
-.add-student-main>button{
+.edit-student-main>button{
     position: absolute;
     bottom: 18%;
     left: 50%;
@@ -72,7 +72,7 @@
     padding-top: 0px;
 }
 
-.man-student-close{
+.man-estudent-close{
     height: fit-content;
     width: fit-content;
     background-color: #92959f;

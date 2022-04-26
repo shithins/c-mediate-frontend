@@ -11,7 +11,9 @@ import Signup from "./components/Signup/Signup";
 import Userhome from "./components/User/Userhome/Userhome";
 import Managehome from "./components/Management/Home/Mhome";
 import Navbar from "./components/Navbar/Navbar";
+import Forgotpassword from "./components/ForgotPassword/Forgotpassword";
 import { ToastContainer } from "react-toastify";
+import Adminpage from "./components/Admin/Admin";
 function App() {
  
   const [showAddpopup , setAddpopup] = useState("close")
@@ -42,6 +44,13 @@ function App() {
           </Route>
          <Route path="/management/home">
             <Managehome setManagementpopup={setManagementpopup} showManagementpopup={showManagementpopup}/>
+         </Route>
+         
+         <Route path="/forgotpassword">
+         <Forgotpassword />
+         </Route>
+         <Route path="/admin/home">
+         <Adminpage/>
          </Route>
         </Switch>
       </Router>

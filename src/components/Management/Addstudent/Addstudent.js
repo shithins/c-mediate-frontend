@@ -36,6 +36,12 @@ const Addstudent = ({setManagementpopup}) => {
         <h2>Add user </h2>
         <input type="text" value={name} onChange={(e)=>setName(e.target.value)} placeholder="Student Name" />
         <input type="number" value={mobile} placeholder="Phone Number" onChange={(e)=>setMobile(e.target.value)} />
+        
+        <select >
+        <option value="student">Student</option>
+        <option value="staff">Staff</option>
+        </select>
+      
         <button onClick={addHandler}>{loading ? (
           <Box sx={{ width: "100%" }}>
             Adding
