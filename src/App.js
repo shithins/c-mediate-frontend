@@ -57,7 +57,7 @@ function App() {
          <Route path="/admin/home">
          <Adminpage/>
          </Route>
-         <Route path="/404error">
+         <Route path="/*">
          <Errorpage/>
          </Route>
         </Switch>

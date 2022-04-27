@@ -48,7 +48,7 @@ function Navbar({ setAddpopup , setManagementpopup }) {
 
   return (
     <div className="nav-main">
-      <img className="navLogo" src={Logo}  /> 
+      <img className="navLogo" onClick={()=> window.location.href='/'} src={Logo}  /> 
       {user?.user && (
         <img src={avatar} className="avatarImg" onClick={() => setProopt(!showProopt)} />
       )}
