@@ -9,6 +9,7 @@ const Errorpage = () => {
         <div className="time-space">
         
         </div>
+        <button>HOME PAGE</button>
         </div>
     )
 }

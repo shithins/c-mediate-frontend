@@ -12,9 +12,31 @@
     top: 50%;
     left: 50%;
     transform: translate(-50% , -50%);
-    /* mix-blend-mode: luminosity; */
+    mix-blend-mode: luminosity;
 }
 
 .time-space{
     position: absolute;
+    background-color: #0f0f0f;
+    height: 55px;
+    width: 302px;
+    left: 535px;
+    bottom: 426px;
+    border: white solid 1px;
+}
+
+
+.errorMain>button{
+    position: absolute;
+    background-color: #000000;
+    height: 31px;
+    width: 98px;
+    left: 535px;
+    bottom: 344px;
+    color: white;
+    font-size: .8rem;
+    font-weight: 600;
+    font-family: inherit;
+    border-radius: 10px;
+    text-decoration: underline;
 }
