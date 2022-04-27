@@ -15,13 +15,19 @@
   font-family: "Times New Roman", Times, serif;
   margin-left: 80px;
 }
+.navLogo{
+  width: 233px;
+  border-radius: 20px;
+  
+  margin-left: 55px;
+}
 
-.nav-main > img {
+.avatarImg{
   height: 60px;
   width: 60px;
   border: 1px solid rgb(43, 42, 42);
   border-radius: 50%;
-  margin-right: 20px;
+  margin-right: 50px;
 }
 
 .pro-menu {

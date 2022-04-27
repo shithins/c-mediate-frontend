@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
-import avatar from "../../images/avatar.jpeg";
+import avatar from "../../images/avatar1.jpg"; 
 import { useHistory } from "react-router-dom";
 import decode from "jwt-decode";
+import Logo from '../../images/smallLogo.png'
 
 function Navbar({ setAddpopup , setManagementpopup }) {
   const history = useHistory();
@@ -47,9 +48,9 @@ function Navbar({ setAddpopup , setManagementpopup }) {
 
   return (
     <div className="nav-main">
-      <p>C-MEDIATE</p>
+      <img className="navLogo" src={Logo}  /> 
       {user?.user && (
-        <img src={avatar} onClick={() => setProopt(!showProopt)} />
+        <img src={avatar} className="avatarImg" onClick={() => setProopt(!showProopt)} />
       )}
       {showProopt && (
         <div className="pro-menu" onMouseLeave={() => setProopt(false)}>

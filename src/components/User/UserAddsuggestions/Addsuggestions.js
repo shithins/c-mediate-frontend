@@ -10,8 +10,8 @@ const Addsuggestions = ({ setAddpopup }) => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const uploadHandler = () => {
-    if (!message) return infoToast("missing data");
+  const uploadHandler = () => { 
+    if (!message) return infoToast("missing data"); 
     setLoading(true);
     Axios.post("/suggestion/add", { message })
       .then(({ data }) => {

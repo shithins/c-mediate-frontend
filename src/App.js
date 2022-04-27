@@ -14,6 +14,9 @@ import Navbar from "./components/Navbar/Navbar";
 import Forgotpassword from "./components/ForgotPassword/Forgotpassword";
 import { ToastContainer } from "react-toastify";
 import Adminpage from "./components/Admin/Admin";
+import Errorpage from "./components/404 error page/Errorpage";
+
+
 function App() {
  
   const [showAddpopup , setAddpopup] = useState("close")
@@ -27,6 +30,8 @@ function App() {
         <div className="eclipse2"></div>
       </div>
      
+      
+    
       <Navbar setAddpopup={setAddpopup} setManagementpopup={setManagementpopup}/>
       <Router>
         <Switch>
@@ -51,6 +56,9 @@ function App() {
          </Route>
          <Route path="/admin/home">
          <Adminpage/>
+         </Route>
+         <Route path="/404error">
+         <Errorpage/>
          </Route>
         </Switch>
       </Router>

@@ -1,0 +1,20 @@
+.errorMain{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+
+.errorMain>img{
+    position: absolute;
+    height: 70%;
+    width: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    /* mix-blend-mode: luminosity; */
+}
+
+.time-space{
+    position: absolute;
+}
