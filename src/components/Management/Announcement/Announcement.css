@@ -1,7 +1,7 @@
 .mann-box-main{
     
-    width: 790px;
-    height: 810px;
+    width: 767px;
+    height: 668px;
     border-radius: 72px;
     box-shadow: inset 2px 5px 8px 5px #5e5c5ccc;
 }
@@ -12,8 +12,8 @@
     top: 35px;
     left: 50%;
     transform: translate(-50%, 0);
-    height: 742px;
-    width: 685px;
+    height: 615px;
+    width: 656px;
     border-radius: 50px  50px;
     background-color: #ffffff36;
     overflow: scroll;

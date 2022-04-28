@@ -39,7 +39,7 @@
 
 .mhome-popups{
     position: absolute;
-    right: 0;
+    right: 70px;
     height: 100%;
     width: 50%;
     display: flex;

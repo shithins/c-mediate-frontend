@@ -2,8 +2,8 @@
 
 .ucom-box-main{
     
-    width: 790px;
-    height: 810px;
+    width: 767px;
+    height: 668px;
     
     
     /* mix-blend-mode: darken; */
@@ -40,8 +40,8 @@
     top: 25px;
     left: 50%;
     transform: translate(-50%, 0);
-    height: 690px;
-    width: 666px;
+    height: 537px;
+    width: 656px;
     /* border-top: 50px black; */
     border-radius: 50px  50px;
     background-color: #ffffff36;
