@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import "./App.css";
 import Loginpage from "./components/Loginpage/Login";
 import {
@@ -57,7 +57,7 @@ function App() {
          <Route path="/admin/home">
          <Adminpage/>
          </Route>
-         <Route path="/404error">
+         <Route path="/*">
          <Errorpage/>
          </Route>
         </Switch>
