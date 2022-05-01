@@ -235,8 +235,36 @@
 
 
 
+}
 
 
+@media screen and (max-width: 600px){
+.login-mainbox {
+    position: absolute;
+    width: 446px;
+    height: 466px;
+    top: 97px;
+    background: #dbd9d9;
+    mix-blend-mode: overlay;
+    border-radius: 47px;
+    border: tomato;
+    left: 50%;
+    transform: translate(-50%, 0);
+    align-items: center;
+}
+.login-imgbox {
+  position: absolute;
+  left: 50%;
+  bottom: -391px;
+  mix-blend-mode: multiply;
+  height: fit-content;
+  transform: translate(-50%, 0);
+  
+  margin: auto;
+}
+.login-imgbox > img {
+  width: 37vw;
+}
 
 
 

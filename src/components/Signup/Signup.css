@@ -158,9 +158,6 @@
   font-size: 1.5rem;
 }
 
-
-
-
 @media screen and (max-width: 1626px) {
   .signup-imgbox {
     position: absolute;
@@ -171,7 +168,7 @@
   .signup-imgbox > img {
     width: 335px;
   }
-/* signup number section */
+  /* signup number section */
   .signup-box {
     position: absolute;
     width: 446px;
@@ -196,19 +193,15 @@
     font-weight: 600;
     text-align: center;
   }
-  
+
   .signup-num > label {
-   
     position: absolute;
     font-size: 1.7rem;
     font-weight: 600;
     top: 102px;
     left: 180px;
-}
+  }
 
-
-  
-  
   .signup-num > button {
     position: absolute;
     width: 154px;
@@ -225,16 +218,16 @@
     font-size: 1.5rem;
   }
 
-/* otp section */
+  /* otp section */
 
-.verify-otp > h2 {
+  .verify-otp > h2 {
     position: absolute;
     font-size: 1.7rem;
     font-weight: 600;
     top: 52px;
     left: 92px;
   }
-  
+
   .verify-otp > input {
     position: absolute;
     width: 336px;
@@ -248,7 +241,7 @@
     font-weight: 600;
     text-align: center;
   }
-  
+
   .verify-otp > button {
     position: absolute;
     width: 154px;
@@ -265,16 +258,16 @@
     font-size: 1.5rem;
   }
 
-/* password creating section */
+  /* password creating section */
 
-.create-pass > h2 {
+  .create-pass > h2 {
     position: absolute;
     font-size: 1.7rem;
     font-weight: 600;
     top: 52px;
     left: 92px;
   }
-  
+
   .pass-box1 > input {
     position: absolute;
     width: 336px;
@@ -288,7 +281,7 @@
     font-weight: 600;
     text-align: center;
   }
-  
+
   .pass-box2 > input {
     position: absolute;
     width: 336px;
@@ -302,7 +295,7 @@
     font-weight: 600;
     text-align: center;
   }
-  
+
   .create-pass > button {
     position: absolute;
     width: 163px;
@@ -332,8 +325,35 @@
     line-height: 18px;
     text-align: center;
     color: #000000;
+  }
 }
 
+@media screen and (max-width: 600px) {
+  .signup-imgbox {
+    position: absolute;
+    left: 50%;
+    bottom: -391px;
+    mix-blend-mode: multiply;
+    height: fit-content;
+    transform: translate(-50%, 0);
 
+    margin: auto;
+  }
 
+  .signup-imgbox > img {
+    width: 37vw;
+  }
+  .signup-box {
+    position: absolute;
+    width: 446px;
+    height: 466px;
+    top: 97px;
+    background: #dbd9d9;
+    mix-blend-mode: overlay;
+    border-radius: 47px;
+    border: tomato;
+    left: 50%;
+    transform: translate(-50%, 0);
+    align-items: center;
+  }
 }

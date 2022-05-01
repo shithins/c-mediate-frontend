@@ -78,3 +78,49 @@
     }
   }
 }
+
+@media screen and (max-width: 600px){
+
+  .gif-main {
+    position: absolute;
+    top: 45%;
+    mix-blend-mode: multiply;
+    animation: roll 6s infinite;
+    width: fit-content;
+    align-self: center;
+    left: 50%;
+    transform: translate(-50%,-50%);
+      
+  }
+  .gif-main > img {
+    width: 410px;
+    border-radius: 48%;
+    box-shadow: 0px 0px 32px 18px rgb(193 176 176 / 90%);
+  }
+  @keyframes roll {
+    
+    0% {
+      top: 35%;
+     
+    }
+    25%{
+      top: 45%;
+      
+    }
+    50%{
+      top: 35%;
+     
+    }
+    75%{
+      top: 45%;
+     
+    }
+   
+    100% {
+      top: 35%;
+      
+    }
+  }
+
+
+}

@@ -154,7 +154,7 @@ const Ucomplaints = ({
           !loading &&
           complaints.map((item) => {
             return (
-              <div className="com-box" key={item._id}>
+              <div className="com-box" style={{background:item?.status ==='solved' && 'rgb(60 227 65 / 44%)'}} key={item._id}>
               <span className="com-box-date">{new Date(item.date).toLocaleDateString()}</span>
                 <p>{item.message}</p>
                 {item.image && (
@@ -192,7 +192,7 @@ const Ucomplaints = ({
                   </div>
                 )}
 
-                {options !== "All" && item.reply && (
+                { item.reply && (
                   <div className="reply-area">
                     <h6>Reply</h6>
                     <p>{item.reply}</p>

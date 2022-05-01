@@ -112,3 +112,22 @@
 }
 
 }
+@media screen and (max-width: 600px){
+
+  .avatarImg {
+    height: 49px;
+    width: 50px;
+    border: 1px solid rgb(43, 42, 42);
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  .navLogo {
+    width: 127px;
+    border-radius: 13px;
+    margin-left: 25px;
+  }
+
+
+
+
+}

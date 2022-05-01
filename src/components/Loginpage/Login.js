@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Login.css";
 
 import "react-toastify/dist/ReactToastify.css";
-import { errorToast, successToast } from "../../constant/toast";
+import { errorToast, infoToast, successToast } from "../../constant/toast";
 import Axios from "../../constant/axios";
 import { useHistory } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -33,6 +33,9 @@ const Loginpage = () => {
         setLoading(false);
 
         if (res.data.status) {
+          if(res?.data?.profile?.user?.role !== 3 && window.screen.width < 600){
+            return infoToast('Use computer for better experience ..')
+          }
           localStorage.setItem("user", JSON.stringify(res?.data?.profile));
           window.location.reload();
         } else errorToast(res.data.message);

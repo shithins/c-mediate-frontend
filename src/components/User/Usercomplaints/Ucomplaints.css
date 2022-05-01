@@ -90,7 +90,7 @@
 }
 
 .reply-area{
-    max-width: 550px;
+    max-width: 90%;
     max-height: fit-content;
     
 }
@@ -111,7 +111,7 @@
     mix-blend-mode: darken;
     /* margin-right: 5px ; */
     height: fit-content;
-    width: 500px;
+    width: 90%;
     border-radius: 30px;
     color: black;
     padding: 20px;
@@ -207,9 +207,84 @@
         max-width: 323px;
     }
 
+   
 
 
 
 
+}
+
+@media screen and (max-width: 600px){
+
+    .ucom-box-main {
+        width: 98%;
+        height: 64vh;
+        /* mix-blend-mode: darken; */
+        border-radius: 72px;
+        box-shadow: inset 2px 5px 8px 5px #5e5c5ccc;
+    }
+
+    .ucom-content-main {
+        position: relative;
+        top: 25px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        height: 53vh;
+        width: 98%;
+        /* border-top: 50px black; */
+        border-radius: 50px 50px;
+        background-color: #ffffff36;
+        /* mix-blend-mode: multiply; */
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .com-box {
+        background-color: rgb(255 255 255 / 55%);
+        /* mix-blend-mode: darken; */
+        margin: 20px 50%;
+        transform: translate(-50%,0);
+        height: -moz-fit-content;
+        height: fit-content;
+        width: 90%;
+        min-height: 66px;
+        min-width: 178px;
+        border-radius: 30px;
+        color: black;
+        padding: 10px;
+        padding-left: 17px;
+        text-align: justify;
+        font-size: 1.1rem;
+    }
+    .ucom-btns {
+        height: 40px;
+        top: 9px;
+        padding: 0px 0px;
+    }
+    .ucom-btns>button {
+        height: 37px;
+        width: -moz-fit-content;
+        width: fit-content;
+        min-width: 60px;
+        border-radius: 44px;
+        position: relative;
+        mix-blend-mode: lighten;
+        margin-left: 32px;
+        margin-top: 18px;
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: sans-serif;
+    }
+
+    .report-btn {
+        width: -moz-fit-content;
+        width: fit-content;
+        height: -moz-fit-content;
+        height: fit-content;
+        /* background-color: rgb(231, 46, 21); */
+        margin-left: 379px !important;
+        margin-top: 5px;
+        transform: scale(1.3);
+    }
+   
 
 }

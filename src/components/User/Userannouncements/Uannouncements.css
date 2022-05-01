@@ -121,3 +121,52 @@
 
 
 }
+
+@media screen and (max-width: 600px){
+
+    .uann-box-main{
+    
+        width: 98%;
+        height: 64vh;
+        /* mix-blend-mode: darken; */
+        border-radius: 72px;
+        box-shadow: inset 2px 5px 8px 5px #5e5c5ccc;
+    }
+
+ .uann-content-main{
+    position: relative;
+    top: 25px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 57vh;
+    width: 98%;
+    /* border-top: 50px black; */
+    border-radius: 50px 50px;
+    background-color: #ffffff36;
+    /* mix-blend-mode: multiply; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+        
+    
+    }
+
+    .ann-box{
+        background-color: rgb(255 255 255 / 55%);
+        /* mix-blend-mode: darken; */
+        margin: 20px 50%;
+        transform: translate(-50%,0);
+        height: -moz-fit-content;
+        height: fit-content;
+        width: 90%;
+        min-height: 66px;
+        min-width: 178px;
+        border-radius: 30px;
+        color: black;
+        padding: 10px;
+        padding-left: 17px;
+        text-align: justify;
+        font-size: 1.1rem;
+    }
+
+
+}
