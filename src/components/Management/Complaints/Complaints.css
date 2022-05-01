@@ -117,3 +117,91 @@
     font-family: cursive;
     margin-top: 50px;
 }
+
+@media screen and (max-width: 1626px) {
+    .mcom-box-main{
+        width: 623px;
+        height: 460px;
+        
+        /* mix-blend-mode: darken; */
+        border-radius: 72px;
+        box-shadow: inset 2px 5px 8px 5px #5e5c5ccc;
+    }
+    
+    .mcom-btns{
+    
+        height: 50px;
+        top: 10px;
+        padding: 10px 58px;
+        
+    }
+    
+    .mcom-btns>button{
+        height: 37px;
+        width: -moz-fit-content;
+        width: fit-content;
+        min-width: 102px;
+        border-radius: 44px;
+        position: relative;
+        mix-blend-mode: lighten;
+        margin-left: 29px;
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        font-family: sans-serif;
+    
+    }
+    .mcom-content-main{
+        position: relative;
+        top: 7px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        height: 368px;
+        width: 579px;
+        /* border-top: 50px black; */
+        border-radius: 50px 50px;
+        background-color: #ffffff36;
+        /* mix-blend-mode: multiply; */
+        overflow: scroll;
+    
+    }
+    .mcom-box{
+        background-color: rgb(255 255 255 / 55%);
+        /* mix-blend-mode: darken; */
+        margin: 20px 50%;
+        transform: translate(-50%,0);
+        height: -moz-fit-content;
+        height: fit-content;
+        width: 502px;
+        min-height: 66px;
+        min-width: 180px;
+        border-radius: 30px;
+        color: black;
+        padding: 10px;
+        padding-left: 19px;
+        text-align: justify;
+        font-size: 1.2rem;
+    }
+    .status-btns>button {
+        height: 39px;
+        width: -moz-fit-content;
+        width: fit-content;
+        min-width: 126px;
+        border-radius: 44px;
+        position: relative;
+        mix-blend-mode: darken;
+        margin-left: 6px;
+        margin-bottom: 21px;
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        font-family: sans-serif;
+        color: white;
+    }
+
+.mcom-box>img {
+    max-width: 361px;
+    border-radius: 20px;
+}
+
+}

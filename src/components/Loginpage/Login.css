@@ -129,35 +129,116 @@
   .login-imgbox {
     position: absolute;
     left: 215px;
-    top: 178px;
+    top: 155px;
     mix-blend-mode: multiply;
   }
   .login-imgbox > img {
-    width: 463px;
+    width: 335px;
   }
   .login-mainbox {
     position: absolute;
-    width: 561px;
-    height: 601px;
+    width: 446px;
+    height: 466px;
     right: 157px;
-    top: 108px;
+    top: 90px;
     background: #dbd9d9;
     mix-blend-mode: overlay;
     border-radius: 47px;
     border: tomato;
     align-items: center;
 }
-.login-mainbox {
-    position: absolute;
-    width: 532px;
-    height: 589px;
-    right: 157px;
-    top: 108px;
-    background: #dbd9d9;
-    mix-blend-mode: overlay;
-    border-radius: 47px;
-    border: tomato;
-    align-items: center;
+.login-textbox1 > input {
+  position: absolute;
+  width: 335px;
+  height: 45px;
+  top: 114px;
+  left: 56px;
+  background: rgb(253, 249, 249);
+  /* mix-blend-mode: soft-light; */
+  border-radius: 47px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
 }
+.login-textbox2 > input {
+  position: absolute;
+  width: 335px;
+  height: 45px;
+  top: 192px;
+  left: 56px;
+  background: rgb(253, 249, 249);
+  /* mix-blend-mode: soft-light; */
+  border-radius: 47px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+.login-btn > button {
+  position: absolute;
+    width: 159px;
+    height: 43px;
+    bottom: 145px;
+    left: 147px;
+    text-align: center;
+    text-decoration-color: rgb(201, 47, 47);
+    background: #e6e1e1;
+    /* mix-blend-mode: color-dodge; */
+    border-radius: 16px;
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+.login-mainbox > h2 {
+  position: absolute;
+  width: 222px;
+  height: 57px;
+  left: 115px;
+  top: 0px;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 71px;
+  text-align: center;
+  color: #000000;
+}
+
+.fpass > h4 {
+  position: absolute;
+  width: 367px;
+  height: 23px;
+  bottom: 55px;
+  left: 44px;
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 18px;
+  text-align: center;
+  color: #000000;
+}
+.fpass > h3 {
+  position: absolute;
+  width: 367px;
+  height: 23px;
+  bottom: 9x;
+  margin: 5px;
+  left: 48px;
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 18px;
+  text-align: center;
+  color: #000000;
+}
+
+
+
+
+
+
+
+
 
 }

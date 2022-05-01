@@ -90,3 +90,81 @@
 .sugg-actionbtns>button:hover{
     box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.2);
 }
+
+@media screen and (max-width: 1626px) {
+
+    .usugg-box-main{
+    
+        width: 623px;
+        height: 460px;
+        
+        /* mix-blend-mode: darken; */
+        border-radius: 72px;
+        box-shadow: inset 2px 5px 8px 5px #5e5c5ccc;
+    }
+    
+    .usugg-btns{
+        
+        height: 49px;
+        top: 9px;
+        padding: 3px 1px;  
+        
+        
+    }
+
+    .usugg-btns>button{
+        height: 37px;
+        width: -moz-fit-content;
+        width: fit-content;
+        min-width: 102px;
+        border-radius: 44px;
+        position: relative;
+        mix-blend-mode: lighten;
+        margin-left: 29px;
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        font-family: sans-serif;
+    }
+    .usugg-content-main{
+        position: relative;
+        top: 25px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        height: 354px;
+        width: 579px;
+        /* border-top: 50px black; */
+        border-radius: 50px 50px;
+        background-color: #ffffff36;
+        /* mix-blend-mode: multiply; */
+        overflow: scroll;
+        
+    
+    }
+    .sugg-box{
+        background-color: rgb(255 255 255 / 55%);
+        /* mix-blend-mode: darken; */
+        margin: 20px 50%;
+        transform: translate(-50%,0);
+        height: -moz-fit-content;
+        height: fit-content;
+        width: 502px;
+        min-height: 66px;
+        min-width: 180px;
+        border-radius: 30px;
+        color: black;
+        padding: 10px;
+        padding-left: 19px;
+        text-align: justify;
+        font-size: 1.2rem;
+    }
+    .sugg-actionbtns>button {
+        margin: 13px;
+        padding: 0px;
+        border-radius: 50%;
+        border: none;
+        transition: all .3s ease-in;
+        transform: scale(1.1);
+    }
+
+}

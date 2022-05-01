@@ -71,3 +71,53 @@
     font-family: sans-serif;
     color: black;
 }
+
+@media screen and (max-width: 1626px) {
+
+    .uann-box-main{
+    
+        width: 623px;
+        height: 460px;
+        
+        /* mix-blend-mode: darken; */
+        border-radius: 72px;
+        box-shadow: inset 2px 5px 8px 5px #5e5c5ccc;
+    }
+   
+    
+    .uann-content-main{
+        position: relative;
+        top: 25px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        height: 415px;
+        width: 579px;
+        /* border-top: 50px black; */
+        border-radius: 50px 50px;
+        background-color: #ffffff36;
+        /* mix-blend-mode: multiply; */
+        overflow: scroll;
+        
+    
+    }
+
+    .ann-box{
+        background-color: rgb(255 255 255 / 55%);
+        /* mix-blend-mode: darken; */
+        margin: 20px 50%;
+        transform: translate(-50%,0);
+        height: -moz-fit-content;
+        height: fit-content;
+        width: 502px;
+        min-height: 66px;
+        min-width: 180px;
+        border-radius: 30px;
+        color: black;
+        padding: 10px;
+        padding-left: 19px;
+        text-align: justify;
+        font-size: 1.2rem;
+    }
+
+
+}

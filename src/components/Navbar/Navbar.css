@@ -55,3 +55,60 @@
   font-weight: 500;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
+
+
+
+@media screen and (max-width: 1626px) {
+
+  .nav-main {
+    position: fixed;
+    width: 100%;
+    background-color: transparent;
+    z-index: 9999;
+    height: 81px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navLogo {
+  width: 127px;
+  border-radius: 13px;
+  margin-left: 55px;
+}
+.avatarImg {
+  height: 49px;
+  width: 50px;
+  border: 1px solid rgb(43, 42, 42);
+  border-radius: 50%;
+  margin-right: 50px;
+}
+.pro-menu > p {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.pro-menu {
+  position: absolute;
+  top: 91px;
+  right: 20px;
+  background-color: rgb(32, 63, 65);
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 999999;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 5px rgb(238 243 243);
+}
+
+}
